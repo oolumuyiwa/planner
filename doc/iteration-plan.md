@@ -1,0 +1,2 @@
+## Iteration 1 plan:
+The main use case that should be prioritized would be adding tasks. The task is the primary component of the application, so implementing this is critical over all else. The only secondary use case would be adding/editing courses, since tasks are grouped by course, however that is not as necessary.s
