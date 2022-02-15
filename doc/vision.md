@@ -12,7 +12,12 @@ The various features are:
   - students will also be able to receive notifications prior to upcoming or late assignments
   - students will be able to mark an assignment as complete, moving it out of view
 
-For the design, there will be two main view/panes: a course view as well as a task feed view. The course view will allow students to view their courses and the various tasks assigned to them, as well as supplementary information about the courses. The task feed will show only tasks, sorted according to due dates similar to that of Google Calendars.
+For the design, there will be two main view/panes: a course view as well as a task feed view. The course view will allow students to view their courses and the various tasks assigned to them, as well as supplementary information about the courses. The task feed will show only tasks, sorted according to due dates similar to that of Google Calendars. Some other features are:
+- A calendar view displaying outstanding assignments, class times
+- A list displaying tasks and events in user-preferred order (I.e alphabetical or time-based or course-based) with each day in sequence at any given instance. 
+- A "create task" activity with several parameters such as due dates to use to create a task for the user. 
+- A "create course activity" with several parameters including recurring class time to use to create a course schedule for the user.
+- A "delete" button to enable the user to delete any given task or event. Sends a confirmation prompt before executing action.
 
 ## Constraints
 This application will be made for Android only.
