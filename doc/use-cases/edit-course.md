@@ -1,18 +1,18 @@
-#Edit course 
-##Scope
+# Edit course 
+## Scope
     Planner application 
-##Level
+## Level
     User goal
-##Primary Actor 
+## Primary Actor 
     Student 
-##Stakeholders And Interests
-###Student: 
+## Stakeholders And Interests
+### Student: 
 Wants easy means to edit course without having to delete and create another course, as some planner apps tend to lack that functionality.  
 
-##Preconditions
+## Preconditions
 Student has a preexisting course on record.
 
-##Postconditions
+## Postconditions
 
 1. Course components are modified.
 
@@ -22,7 +22,7 @@ Student has a preexisting course on record.
 
 
 
-##Main Success Scenario
+## Main Success Scenario
 
 
 
@@ -40,15 +40,15 @@ Student has a preexisting course on record.
 
 
 
-##Extensions
+## Extensions
 
-###4a) Edit Course Class Time
+### 4a) Edit Course Class Time
 
 1. Upon the display of the add course page, the user enters class time
 
 2. The system validates the given class times.
 
-###4b) Edit Course Exam Time
+### 4b) Edit Course Exam Time
 
 1. Upon the display of the add course page, the user enters the exam time and date and specifies whether it's a midterm or a final.
 
@@ -58,13 +58,13 @@ Student has a preexisting course on record.
 
 
 
-###5a) Invalid Information
+### 5a) Invalid Information
 
 1. The date is in invalid format and/or in the past.
 
 2. The system signals error and asks for valid date format and time.
 
-###5b) Inadequate Information
+### 5b) Inadequate Information
 
 1. The exam time/date or class time or course name is not given.
 
@@ -72,13 +72,13 @@ Student has a preexisting course on record.
 
 
 
-###*a) System crashes
+### *a) System crashes
 
 1. Student restarts system.
 
 2. System reconstructs prior state.
 
-###*b) User exiting activity
+### *b) User exiting activity
 
 1. Student presses 'cancel' button
 
@@ -92,7 +92,7 @@ Student has a preexisting course on record.
 
 
 
-##Special Requirements:
+## Special Requirements:
 
 1. Android OS of version 5.0 or higher.
 
