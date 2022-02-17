@@ -10,8 +10,6 @@
 * Notify users when time distances are triggered (I.e 2 days/ 2 hours from deadline)
 * Notify users when event occurs
 
-**Extensions of use cases:**
-Supplementaries to success scenarios (e.g choosing to be notified 2 hours before an event takes place)
 
 ## Brief Use Cases:
 
@@ -65,3 +63,7 @@ Supplementaries to success scenarios (e.g choosing to be notified 2 hours before
   3. The user specifies a preexisting course.
   4. The user modifies specific components of the course and saves the course.
   5. The user saves the course and the system updates the task.
+
+* **Planner – Notify users when time distances are triggered.**
+   1. When event is triggered by time, system sends a notification to the user.
+   2. The app displays a reminder of the event when the user next opens the app.  
