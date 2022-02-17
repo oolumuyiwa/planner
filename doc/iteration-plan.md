@@ -1,2 +1,5 @@
 ## Iteration 1 plan:
-The main use case that should be prioritized would be adding tasks. The task is the primary component of the application, so implementing this is critical over all else. The only secondary use case would be adding/editing courses, since tasks are grouped by course, however that is not as necessary.s
+The primary focus for the first iteration would be on the following use cases, in order of importance:
+* **adding tasks**: the task is the core component of the application, without which there would be little purpose. Adding the task permits for further refinement and other features to be build upon its framework.
+* **add course time (due dates)**: this use case builds off of the core functionality of the task itself, so it is secondary in importance.
+* **adding/editing courses**: while tasks would be organized partially according to their corresponding course, this use case is not as important as having the core functionality present.
