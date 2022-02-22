@@ -1,4 +1,4 @@
-# Add Course Time
+# Add Course 
 ## Scope
     Planner application
 
@@ -49,11 +49,13 @@ Student is in the process of creating or updating a course.
 
 4. Upon the display of the add course page, the user enters class time
 
-5. The user saves the class time by pressing a button on add course page.
+5. The user adds a course name.
 
-6. The system checks that all other required information to have a valid course has been given.
+6. The user saves the class time by pressing a button on add course page.
 
-7. The system updates the course schedule and makes the class time a recurring weekly event till specified end date of course.
+7. The system checks that all other required information to have a valid course has been given.
+
+8. The system updates the course schedule and makes the class time a recurring weekly event till specified end date of course.
 
 
 
@@ -61,13 +63,13 @@ Student is in the process of creating or updating a course.
 
 ## Extensions
 
-### 6a) Invalid Information
+### 7a) Invalid Information
 
 1. The date is in invalid format and/or in the past.
 
 2. The system signals error and asks for valid date format and time.
 
-### 6b) Inadequate Information
+### 7b) Inadequate Information
 
 1. The exam time/date or class time or course name is not given.
 

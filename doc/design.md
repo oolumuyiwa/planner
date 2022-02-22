@@ -25,7 +25,7 @@ time
 date
 }
 class Student{
-test
+name
 }
 class TasksPane{
 }
@@ -36,10 +36,9 @@ class Calendar{
 
 
 'associations
- Student "1" - "1..*" Course : \tAdds\t\t
- Student "1" - "*" Course : \tEdits\t\t
+ Student "1" - "1..*" Course : \tTakes\t\t
  Course "1" -down- "*" Task : \tContains\t\t
- Course "1" - "1" meetingTime : \tContains\t\t
+ Course "1" - "1..*" meetingTime : \tContains\t\t
  Student "1" - "1..*" Task : \tAdds\t\t
  Student "1" - "1..*" Task : \tEdits\t\t
  Task "1" -down- "*" Deadline : \tContains\t\t
