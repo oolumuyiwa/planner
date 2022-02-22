@@ -41,7 +41,7 @@ Student has a preexisting course on record.
 
 1. The user opens the app after installing.
 
-2. The user moves to the Tasks activity page by swiping to/pressing the Tasks tab.
+2. The user opens a course or moves to the Tasks activity page by swiping to/pressing the Tasks tab.
 
 3. The user presses the add button on the Tasks activity page.
 
