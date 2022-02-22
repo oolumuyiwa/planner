@@ -1,4 +1,4 @@
-##Domain Model
+## Domain Model For Planner App
 ```plantuml
 @startuml
 title Domain Model
