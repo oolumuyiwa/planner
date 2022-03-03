@@ -1,4 +1,8 @@
+import java.util.ArrayList;
+
 public class Controller {
+    public ArrayList<Task> taskList;
+
     public static void main(String[] args){
 
     }
@@ -6,6 +10,7 @@ public class Controller {
 
     }
     public static void addTask(Task t){
+
 
     }
 }

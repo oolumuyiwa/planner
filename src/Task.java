@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Calendar;
 
 class Task {
@@ -6,6 +7,7 @@ class Task {
     public Course associatedCourse;
     public Calendar deadline;
     public String notes;
+    public ArrayList<Task> tasksList;
     public Task(String name, String type, Course associatedCourse, Calendar deadline, String notes){
         this.name = name;
         this.type = type;
@@ -20,5 +22,4 @@ class Task {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
     }
-
 }
