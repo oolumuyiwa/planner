@@ -1,4 +1,4 @@
-## Domain Model For Planner App
+# Domain Model For Planner App
 ```plantuml
 @startuml
 title Domain Model
@@ -50,6 +50,9 @@ class Calendar{
 @enduml
 ```
 
+# Sequence Diagrams For Planner App
+## "Add Task" operation
+
 ```plantuml
 @startuml
 actor Student as student
@@ -63,6 +66,11 @@ student -> textInterface: Give valid data
 textInterface -> controller: Create new task (name, course)
 controller -> taskLibrary: Add new task in specified course
 @enduml
+```
+
+## "Add Course" operation
+
+```plantuml
 @startuml
 actor Student as student
 participant "Text Interface" as textInterface
@@ -74,6 +82,9 @@ textInterface -> student : Ask for data
 student -> textInterface: Give valid data
 textInterface -> controller: Create new course
 controller -> taskLibrary: Add new course as task category
-
 @enduml
 ```
+
+# Class Diagram for Planner App
+
+### TODO
