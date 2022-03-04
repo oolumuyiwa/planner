@@ -17,7 +17,7 @@ public class Semester {
         String res = "";
         String sfl = "" + this.semname.charAt(0);
         String semname = this.semname.substring(1);
-        res = res + sfl + semname + " " + semyear;
+        res = res + sfl.toUpperCase() + semname + " " + semyear;
         return res;
     }
 }
