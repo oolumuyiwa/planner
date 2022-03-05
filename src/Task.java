@@ -4,21 +4,26 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 class Task {
+
     public String name;
     public String type;
     public Course associatedCourse;
     public LocalDateTime deadline;
     public String notes;
+    public int id;
 
     public Task(String name, String type, Course associatedCourse, LocalDateTime deadline, String notes) {
+
         this.name = name;
         this.type = type;
         this.associatedCourse = associatedCourse;
         this.deadline = deadline;
         this.notes = notes;
+        this.id = id;
     }
 
     public Task() {
+
         this.name = "Untitled";
         this.type = "Not given";
         this.associatedCourse = null;
@@ -38,38 +43,42 @@ class Task {
         this.notes = notes;
     }
 
-    public void setAssociatedCourse(Course associatedCourse) {
-        this.associatedCourse = associatedCourse;
-    }
+    public void setID(int id){this.id = id;}
 
-    public void setDeadline(LocalDateTime deadline) {
-        this.deadline = deadline;
-    }
+    public void setAssociatedCourse(Course associatedCourse) { this.associatedCourse = associatedCourse; }
+
+    public void setDeadline(LocalDateTime deadline) { this.deadline = deadline; }
 
     public String toString() {
+
         String res = "";
+
         String deadlineMinute = "" + deadline.getMinute();
         if (deadline.getMinute() < 10) {
             deadlineMinute = "0" + deadline.getMinute();
         }
+
         String deadlineHour = "" + deadline.getHour();
         if (deadline.getHour() < 10) {
             deadlineHour = "0" + deadline.getHour();
         }
+
         res += "Task name: " + name + "\n";
         res += "Task type: " + type + "\n";
+
         if (associatedCourse == null) {
             res += "Associated course: none" + "\n";
         } else {
             res += "Associated course: " + associatedCourse.name + " " + associatedCourse.code + ", " + associatedCourse.semester.toString() + "\n";
         }
+
         if (deadline == null) {
             res += "Associated deadline: none" + "\n";
-        }
-        else {
+        } else {
             res += "Task deadline: " + deadline.getDayOfWeek() + ", " + deadline.getDayOfMonth() + " " + deadline.getMonth() + " " + deadline.getYear() + " at"
-                    + deadlineHour + ":" + deadlineMinute;
+                    + deadlineHour + ":" + deadlineMinute + "\n";
         }
+
         res += "Task notes: " + notes + "\n";
         return res;
     }

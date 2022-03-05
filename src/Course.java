@@ -6,7 +6,9 @@ import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
 public class Course {
+
     public String name;
     public int code;
     public Semester semester;
@@ -26,8 +28,8 @@ public class Course {
     public Course() {
         this.name = "";
         this.code = 0;
-
     }
+
     public void setName(String name){
         this.name = name;
     }
@@ -53,6 +55,7 @@ public class Course {
     }
 
     public void setMeetingTime(String day, String time, int recurrences) {
+
         LocalDateTime startTime = LocalDateTime.now();
         LocalDateTime endTime = LocalDateTime.now();
         String mtDescription = "";
@@ -63,11 +66,13 @@ public class Course {
         if (startHour < 10) {
             startHourSt = "0" + startHour;
         }
+
         int startMinute = Integer.parseInt(time.substring(3, 5));
         String startMinuteSt = "" + startMinute;
         if (startMinute < 10) {
             startMinuteSt = "0" + startMinute;
         }
+
         int endHour = Integer.parseInt(time.substring(time.length() - 6, time.length() - 3));
         if (endHour < 0) {
             endHour *= -1;
@@ -76,21 +81,22 @@ public class Course {
         if (endHour < 10) {
             endHourSt = "0" + endHour;
         }
-        int endMinute = Integer.parseInt(time.substring(time.length() - 2, time.length()));
 
+        int endMinute = Integer.parseInt(time.substring(time.length() - 2, time.length()));
         String endMinuteSt = "" + endMinute;
         if (endMinute < 10) {
             endMinuteSt = "0" + endMinute;
         }
+
         startTime = startTime.withHour(startHour);
         startTime = startTime.withMinute(startMinute);
         endTime = endTime.withHour(endHour);
         endTime = endTime.withMinute(endMinute);
-
-
         day = day.toLowerCase();
         String res = "Meeting time successfully added!";
 
+        // TODO there's almost definitely a way to simplify this,
+        // maybe just create a new variable and plug that in for the DOW
         if (day.compareTo("mon") == 0) {
             startTime = startTime.with(TemporalAdjusters.nextOrSame(DayOfWeek.MONDAY));
             endTime = endTime.with(TemporalAdjusters.nextOrSame(DayOfWeek.MONDAY));
