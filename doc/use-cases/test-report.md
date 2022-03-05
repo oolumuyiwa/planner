@@ -1,1 +1,26 @@
-A short test report describing how the prototype was tested. For system tests, this should be a textual description of the inputs provided to the system, the outputs received, and whether they match expectations (feel free to include screenshots). Unit tests will not be required for this iteration. If you want to include them, provide the name of the test class(es), which will then describe the tests using Javadoc (I wrote a JUnit in IntelliJ tutorial, which you may find useful)
+# Testing Report
+Testing was conducted by running through the functionality of the program with various user inputs. The general usage is as follows:
+* new task
+  * enter task name
+  * enter task type
+  * enter deadline in format of yyyy-mm-dd hh:mm
+    * or can enter "no deadline"
+  * enter course code
+    * can enter "none" if there is no course code
+  * enter notes on the task
+    * can enter "none" if there are no notes
+* new course
+  * enter course name
+  * enter course code (must be a number)
+  * enter course semester (format of "season" "year")
+  * enter meeting times
+    * can also enter "done"
+* all tasks
+  * **can view all entered tasks, no user interaction**
+* all courses
+  * **can view all entered courses, no user interaction**
+* edit task
+  * enter ID of task you want to edit
+* edit course
+  * enter ID of course you want to edit
+* *can **quit** at any time*

@@ -87,4 +87,44 @@ controller -> taskLibrary: Add new course as task category
 
 # Class Diagram for Planner App
 
-### TODO
+```plantuml
+@startuml
+class Task{
+- name : String
+- type : String
+ 
+- deadline : LocalDateTime
+- notes : String
+- id : int 
+--
+
+}
+class Course{
+
+- name: String
+- code: int
+- meetingTimes: ArrayList<Pair<LocalDateTime, LocalDateTime>>
+--
++endSale()
++setMeetingTime(day: String, time : String, recurrences : int) : String
+}
+class Semester{
+- semname : String
+- semyear : int
+}
+
+class Controller{
++addCourse()
++addTask()
++listCourses()
++listTasks()
++editCourse(course : Course)
++editTask(task : Task)
+}
+Course -> "(1..*)\ntasks\n{List}" Task : \t\t\t\t
+Course *- "(1)\nsemester\n" Semester : \t\t\t\t
+
+Controller -> "(1..*)\ncourses\n{List}" Course : \t\t\t\t
+Controller -> "(1..*)\ncourses\n{List}" Task : \t\t\t\t
+@enduml
+```
