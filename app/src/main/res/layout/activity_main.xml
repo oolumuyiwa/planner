@@ -29,13 +29,14 @@
 
     <Button
         android:id="@+id/paneName"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_width="308dp"
+        android:layout_height="75dp"
         android:backgroundTint="#00FFFFFF"
         android:text="Tasks"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/OptionsMenu"
-        app:layout_constraintRight_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
