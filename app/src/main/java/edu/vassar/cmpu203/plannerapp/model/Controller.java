@@ -1,18 +1,16 @@
-package edu.vassar.cmpu203.myapplication.model;
+package edu.vassar.cmpu203.plannerapp.model;
 
 //TODO might want to comment out/remove packages that are unneeded (in other classes too)
-//import javax.swing.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Controller {
 
-    public static ArrayList<Task> tasks = new ArrayList<Task>();
-    public static ArrayList<Course> courses = new ArrayList<Course>();
+    public static ArrayList<Task> tasks = new ArrayList<>();
+    public static ArrayList<Course> courses = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -100,8 +98,7 @@ public class Controller {
         System.out.println("Enter course semester");
         String st = scanner.nextLine().toUpperCase();
         Scanner stinput = new Scanner(st);
-        Semester newsem = new Semester(stinput.next(), stinput.nextInt());
-        newCourse.semester = newsem;
+        newCourse.semester = new Semester(stinput.next(), stinput.nextInt());
 
         while (true) {
             //TODO, string too long for proper output displaying, might want to shorten or add newlines
@@ -220,7 +217,7 @@ public class Controller {
                 int i = 0;
 
                 for (Task task : c.tasks) {
-                    String taskName = task.name.toLowerCase();
+                    //String taskName = task.name.toLowerCase();
                     if (tID == task.id) {
                         editTask(task);
                     }

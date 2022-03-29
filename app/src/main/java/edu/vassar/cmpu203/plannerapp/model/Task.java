@@ -1,9 +1,6 @@
-package edu.vassar.cmpu203.myapplication.model;
+package edu.vassar.cmpu203.plannerapp.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Calendar;
 
 class Task {
 

@@ -10,7 +10,7 @@ android {
 
 
     defaultConfig {
-        applicationId "edu.vassar.cmpu203.myapplication"
+        applicationId "edu.vassar.cmpu203.plannerapp"
         minSdk 29
         targetSdk 32
         versionCode 1

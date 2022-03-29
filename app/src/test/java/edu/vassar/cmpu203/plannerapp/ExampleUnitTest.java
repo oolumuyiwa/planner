@@ -1,4 +1,4 @@
-package edu.vassar.cmpu203.myapplication;
+package edu.vassar.cmpu203.plannerapp;
 
 import org.junit.Test;
 

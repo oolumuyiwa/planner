@@ -1,4 +1,4 @@
-package edu.vassar.cmpu203.myapplication.model;
+package edu.vassar.cmpu203.plannerapp.model;
 
 public class Pair<L,R> {
 
