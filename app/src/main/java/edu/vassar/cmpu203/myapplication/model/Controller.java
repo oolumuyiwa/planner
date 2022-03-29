@@ -1,5 +1,7 @@
+package edu.vassar.cmpu203.myapplication.model;
+
 //TODO might want to comment out/remove packages that are unneeded (in other classes too)
-import javax.swing.*;
+//import javax.swing.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

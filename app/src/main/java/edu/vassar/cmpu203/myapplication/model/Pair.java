@@ -1,3 +1,5 @@
+package edu.vassar.cmpu203.myapplication.model;
+
 public class Pair<L,R> {
 
     private final L left;

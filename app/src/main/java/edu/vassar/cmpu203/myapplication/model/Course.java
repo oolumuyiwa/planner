@@ -1,3 +1,5 @@
+package edu.vassar.cmpu203.myapplication.model;
+
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

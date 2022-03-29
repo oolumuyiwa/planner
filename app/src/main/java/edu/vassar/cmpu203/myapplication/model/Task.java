@@ -1,3 +1,5 @@
+package edu.vassar.cmpu203.myapplication.model;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
