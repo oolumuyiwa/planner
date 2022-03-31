@@ -2,7 +2,7 @@ package edu.vassar.cmpu203.plannerapp.model;
 
 import java.time.LocalDateTime;
 
-class Task {
+public class Task {
 
     public String name;
     public String type;
