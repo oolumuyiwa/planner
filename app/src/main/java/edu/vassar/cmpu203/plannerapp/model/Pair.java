@@ -1,3 +1,5 @@
+package edu.vassar.cmpu203.plannerapp.model;
+
 public class Pair<L,R> {
 
     private final L left;

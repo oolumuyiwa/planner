@@ -1,8 +1,10 @@
-package edu.vassar.cmpu203.myapplication;
+package edu.vassar.cmpu203.plannerapp.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import edu.vassar.cmpu203.plannerapp.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,3 +1,5 @@
+package edu.vassar.cmpu203.plannerapp.model;
+
 public class Semester {
 
     public String semname;
@@ -10,11 +12,9 @@ public class Semester {
 
     public boolean equals(Semester s){
 
-        boolean res = false;
+        boolean res = (s.semname.compareTo(this.semname) == 0) || (s.semyear == this.semyear);
 
-        if((s.semname.compareTo(this.semname) == 0) || (s.semyear == this.semyear)){
-            res = true;
-        } return res;
+        return res;
     }
 
     public String toString(){
