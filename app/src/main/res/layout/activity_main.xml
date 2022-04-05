@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.MainActivity"
+    tools:context="edu.vassar.cmpu203.plannerapp.controller.MainActivity"
     android:background="@color/cardview_dark_background">
 
     <TextView
@@ -32,6 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/ic_baseline_add_24"
+        android:visibility="visible"
         android:layout_width="80dp"
         android:layout_height="80dp">
     </ImageButton>
@@ -39,12 +40,12 @@
 
     <Button
         android:id="@+id/paneName"
-        android:layout_width="308dp"
-        android:layout_height="75dp"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
         android:backgroundTint="#00FFFFFF"
         android:text="Tasks"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/AddTask"
         app:layout_constraintStart_toEndOf="@+id/OptionsMenu"
         app:layout_constraintTop_toTopOf="parent" />
 

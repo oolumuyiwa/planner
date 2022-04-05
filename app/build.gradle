@@ -8,10 +8,9 @@ android {
         viewBinding true
     }
 
-    dataBinding{
-        enabled=true
+    dataBinding {
+        enabled = true
     }
-
 
     defaultConfig {
         applicationId "edu.vassar.cmpu203.plannerapp"
