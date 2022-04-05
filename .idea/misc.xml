@@ -6,8 +6,13 @@
         <entry key="..\:/Users/tomiw/team-j/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2265" />
         <entry key="..\:/Users/tomiw/team-j/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.2265" />
         <entry key="..\:/Users/tomiw/team-j/app/src/main/res/layout/activity_main.xml" value="0.18432971014492755" />
+        <entry key="app/src/main/res/drawable/ic_baseline_airline_seat_legroom_normal_24.xml" value="0.2895" />
         <entry key="app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.2215" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/add_task_screen.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_add_task_view.xml" value="0.2296195652173913" />
+        <entry key="app/src/main/res/layout/fragment_tasks_view.xml" value="0.2368659420289855" />
+        <entry key="app/src/main/res/layout/main.xml" value="0.15" />
       </map>
     </option>
   </component>

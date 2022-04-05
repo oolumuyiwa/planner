@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background">
+
+
+    <TextView
+        android:id="@+id/createTaskDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:includeFontPadding="true"
+        android:text="Create Task"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#DCDCDC"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TaskNameDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:text="NAME"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#DCDCDC"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/createTaskDisplay" />
+    <EditText
+        android:id="@+id/addedNameInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:elegantTextHeight="true"
+        android:ems="17"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:hint="Read page 21-31 of Biology text"
+        android:inputType="textPersonName"
+        android:textColorHint="#757575"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TaskNameDisplay"
+        android:importantForAutofill="no" />
+
+    <TextView
+        android:id="@+id/TaskCourseDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:text="COURSE"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#DCDCDC"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addedNameInput" />
+    <EditText
+        android:id="@+id/addedCourseInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:elegantTextHeight="true"
+        android:ems="17"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:hint="CLS 102"
+        android:inputType="textPersonName"
+        android:textColorHint="#757575"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TaskCourseDisplay"
+        android:importantForAutofill="no" />
+
+    <TextView
+        android:id="@+id/TaskTypeDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:text="TASK TYPE"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#DCDCDC"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addedCourseInput" />
+
+    <Spinner
+        android:id="@+id/addedTypeInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+
+        android:layout_weight="1"
+        android:elegantTextHeight="true"
+        android:hint="Homework"
+        android:importantForAutofill="no"
+        android:textColorHint="#757575"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TaskTypeDisplay" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
