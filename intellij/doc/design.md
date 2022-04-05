@@ -56,14 +56,14 @@ class Calendar{
 ```plantuml
 @startuml
 actor Student as student
-participant "Text Interface" as textInterface
+participant "Graphical Interface" as graphicalInterface
 participant ": Controller" as controller
 participant "Task Library" as taskLibrary
-textInterface -> student: Ask for command 
-student -> textInterface: New task
-textInterface -> student : Ask for data
-student -> textInterface: Give valid data
-textInterface -> controller: Create new task (name, course)
+graphicalInterface -> student: Ask for new task
+student -> graphicalInterface: New task
+graphicalInterface -> student : Ask for data
+student -> graphicalInterface: Give valid data
+graphicalInterface -> controller: Create new task (name, course)
 controller -> taskLibrary: Add new task in specified course
 @enduml
 ```
@@ -73,14 +73,14 @@ controller -> taskLibrary: Add new task in specified course
 ```plantuml
 @startuml
 actor Student as student
-participant "Text Interface" as textInterface
+participant "Graphical Interface" as graphicalInterface
 participant ": Controller" as controller
 participant "Task Library" as taskLibrary
-textInterface -> student: Ask for command 
-student -> textInterface: New course
-textInterface -> student : Ask for data
-student -> textInterface: Give valid data
-textInterface -> controller: Create new course
+graphicalInterface -> student: Ask for new course
+student -> graphicalInterface: New course
+graphicalInterface -> student : Ask for data
+student -> graphicalInterface: Give valid data
+graphicalInterface -> controller: Create new course
 controller -> taskLibrary: Add new course as task category
 @enduml
 ```
