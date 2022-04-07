@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
-    android:background="@color/cardview_dark_background">
+    android:layout_width="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        tools:context=".AboutActivity"
+        android:padding="40dp"
+        android:background="@color/cardview_dark_background">
 
 
     <TextView
         android:id="@+id/createTaskDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
         android:includeFontPadding="true"
@@ -22,64 +29,68 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/TaskNameDisplay"
+        android:id="@+id/taskNameDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:text="NAME"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#DCDCDC"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/createTaskDisplay" />
-    <EditText
-        android:id="@+id/addedNameInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:elegantTextHeight="true"
-        android:ems="17"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="8dp"
-        android:hint="Read page 21-31 of Biology text"
-        android:inputType="textPersonName"
-        android:textColorHint="#757575"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TaskNameDisplay"
-        android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/addedNameInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:elegantTextHeight="true"
+            android:ems="17"
+            android:hint="Read page 21-31 of Biology text"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:textColor="#DCDCDC"
+            android:textColorHint="#757575"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/taskNameDisplay" />
 
     <TextView
-        android:id="@+id/TaskCourseDisplay"
+        android:id="@+id/taskCourseDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:text="COURSE"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#DCDCDC"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/addedNameInput" />
-    <EditText
-        android:id="@+id/addedCourseInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:elegantTextHeight="true"
-        android:ems="17"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="8dp"
-        android:hint="CLS 102"
-        android:inputType="textPersonName"
-        android:textColorHint="#757575"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TaskCourseDisplay"
-        android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/addedCourseInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:elegantTextHeight="true"
+            android:ems="17"
+            android:hint="CLS 102"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:textColor="#DCDCDC"
+            android:textColorHint="#757575"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/taskCourseDisplay" />
 
     <TextView
-        android:id="@+id/TaskTypeDisplay"
+        android:id="@+id/taskTypeDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:text="TASK TYPE"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -88,18 +99,83 @@
         app:layout_constraintTop_toBottomOf="@id/addedCourseInput" />
 
     <Spinner
-        android:id="@+id/addedTypeInput"
+        android:id="@+id/taskTypesSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-
         android:layout_weight="1"
         android:elegantTextHeight="true"
-        android:hint="Homework"
-        android:importantForAutofill="no"
-        android:textColorHint="#757575"
+        android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TaskTypeDisplay" />
+        app:layout_constraintTop_toBottomOf="@id/taskTypeDisplay" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/deadlineDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="DEADLINE"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#DCDCDC"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/taskTypesSpinner" />
+
+        <Switch
+            android:id="@+id/noDeadline"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/cardview_dark_background"
+            android:text="No deadline"
+            android:textColor="#DCDCDC"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/deadlineDisplay" />
+
+        <EditText
+            android:id="@+id/taskDateInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="8dp"
+            android:ems="17"
+            android:inputType="date"
+            android:textColor="#DCDCDC"
+            android:textColorHint="#757575"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/noDeadline" />
+        <Switch
+            android:id="@+id/addDeadlineTime"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/taskDateInput"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/cardview_dark_background"
+            android:text="Add Time"
+            android:textColor="#DCDCDC"
+            android:textSize="16sp">
+        </Switch>
+
+        <EditText
+            android:id="@+id/taskTimeInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="8dp"
+            android:ems="17"
+            android:inputType="time"
+            android:textColor="#DCDCDC"
+            android:textColorHint="#757575"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addDeadlineTime"
+            android:visibility="gone"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements ITasksView.Listen
         this.mainView = new MainView(this);
         setContentView(this.mainView.getRootView());
 
-        this.mainView.displayFragment(new TasksView(this), false);
+        this.mainView.displayFragment(new TasksView(this), true);
 
     }
 

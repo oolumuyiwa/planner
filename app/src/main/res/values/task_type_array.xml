@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="task_type_array">
+        <item>Assignment</item>
+        <item>Exam</item>
+        <item>Homework</item>
+        <item>Presentation</item>
+        <item>Paper</item>
+        <item>Project</item>
+        <item>Quiz</item>
+        <item>Test</item>
+        <item>Other</item>
+    </string-array>
+</resources>
