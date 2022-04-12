@@ -16,7 +16,7 @@
         android:elevation="@dimen/cardview_default_elevation"
         android:paddingHorizontal="@dimen/cardview_default_elevation"
         android:paddingVertical="@dimen/cardview_default_elevation"
-        android:src="@drawable/ic_baseline_menu_24"
+        android:src="@drawable/ic_baseline_settings_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></ImageButton>
 
