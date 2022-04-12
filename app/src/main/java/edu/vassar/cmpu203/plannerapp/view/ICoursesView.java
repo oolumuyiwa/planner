@@ -2,14 +2,15 @@ package edu.vassar.cmpu203.plannerapp.view;
 
 import android.view.View;
 
-import edu.vassar.cmpu203.plannerapp.model.Task;
+import edu.vassar.cmpu203.plannerapp.model.Course;
 
-public interface ITasksView {
+
+public interface ICoursesView {
     /* interface for contract that listener to view events must fulfill. */
     interface Listener{
-        void onAddTask();
-        void onClickTaskPane();}
+        void onAddCourse();
+        void onClickCoursePane();}
 
     View getRootView();
-    void updateTaskDisplay(Task task);
+    void updateCourseDisplay(Course course);
 }

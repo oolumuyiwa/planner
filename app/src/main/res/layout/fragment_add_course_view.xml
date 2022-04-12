@@ -1,0 +1,216 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background"
+    tools:context="edu.vassar.cmpu203.plannerapp.controller.MainActivity">
+
+    <TextView
+        android:id="@+id/createCourseDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:includeFontPadding="true"
+        android:text="Create Course"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#DCDCDC"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/courseNameDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="NAME"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#DCDCDC"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/createCourseDisplay" />
+
+    <EditText
+        android:id="@+id/addedCourseNameInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:elegantTextHeight="true"
+        android:ems="17"
+        android:hint="Connecting Computer Science and Discrete Mathematics"
+        android:importantForAutofill="no"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLength="2000"
+        android:maxLines="5"
+        android:textColor="#DCDCDC"
+        android:textColorHint="#757575"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/courseNameDisplay" />
+
+    <TextView
+        android:id="@+id/courseCodeDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="CODE"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#DCDCDC"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addedCourseNameInput" />
+
+    <EditText
+        android:id="@+id/addedCodeInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:elegantTextHeight="true"
+        android:ems="17"
+        android:hint="CLS 102"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColor="#DCDCDC"
+        android:textColorHint="#757575"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/courseCodeDisplay" />
+
+    <TextView
+        android:id="@+id/courseSemesterDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="SEMESTER"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#DCDCDC"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addedCodeInput" />
+
+    <Spinner
+        android:id="@+id/courseSemesterSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:elegantTextHeight="true"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/courseSemesterDisplay" />
+
+
+    <TextView
+        android:id="@+id/deadlineDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="MEETING TIMES"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#DCDCDC"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/courseSemesterSpinner" />
+
+    <Switch
+        android:id="@+id/meetingTimePrompt"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/cardview_dark_background"
+        android:text="Does your course have a meeting time?"
+        android:textColor="#DCDCDC"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/deadlineDisplay" />
+
+    <TextView
+        android:id="@+id/meetingDaysDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="MEETING DAYS"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#DCDCDC"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/meetingTimePrompt" />
+
+    <CheckBox
+        android:id="@+id/sundayBtn"
+        android:layout_width="99dp"
+        android:layout_height="40dp"
+        android:text="Sun"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/meetingDaysDisplay" />
+
+    <CheckBox
+        android:id="@+id/mondayBtn"
+        android:layout_width="99dp"
+        android:layout_height="40dp"
+        android:text="Mon"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toRightOf="@id/sundayBtn"
+        app:layout_constraintTop_toBottomOf="@id/meetingDaysDisplay" />
+
+    <CheckBox
+        android:id="@+id/tuesdayBtn"
+        android:layout_width="99dp"
+        android:layout_height="40dp"
+        android:text="Tue"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toRightOf="@id/mondayBtn"
+        app:layout_constraintTop_toBottomOf="@id/meetingDaysDisplay" />
+
+    <CheckBox
+        android:id="@+id/wednesdayBtn"
+        android:layout_width="99dp"
+        android:layout_height="40dp"
+        android:text="Wed"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/thursdayBtn" />
+
+    <CheckBox
+        android:id="@+id/thursdayBtn"
+        android:layout_width="99dp"
+        android:layout_height="40dp"
+        android:text="Thu"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sundayBtn" />
+
+    <CheckBox
+        android:id="@+id/fridayBtn"
+        android:layout_width="99dp"
+        android:layout_height="40dp"
+        android:text="Fri"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toRightOf="@id/thursdayBtn"
+        app:layout_constraintTop_toBottomOf="@id/mondayBtn" />
+
+    <CheckBox
+        android:id="@+id/saturdayBtn"
+        android:layout_width="99dp"
+        android:layout_height="40dp"
+        android:text="Sat"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toRightOf="@id/fridayBtn"
+        app:layout_constraintTop_toBottomOf="@id/tuesdayBtn" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -175,6 +175,32 @@
             app:layout_constraintTop_toBottomOf="@id/addDeadlineTime"
             android:visibility="gone"/>
 
+        <TextView
+            android:id="@+id/additionalNotesDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="ADDITIONAL NOTES"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#DCDCDC"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/taskTimeInput" />
+
+        <EditText
+            android:id ="@+id/edtInput"
+            android:layout_width ="0dip"
+            android:layout_height ="wrap_content"
+            android:layout_weight ="1"
+            android:ems="17"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLines ="5"
+            android:maxLength ="2000"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/additionalNotesDisplay"
+            android:scrollHorizontally="false" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

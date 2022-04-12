@@ -7,7 +7,7 @@ import android.os.Bundle;
 import edu.vassar.cmpu203.plannerapp.R;
 import edu.vassar.cmpu203.plannerapp.view.*;
 
-public class MainActivity extends AppCompatActivity implements ITasksView.Listener, IAddTaskView.Listener{
+public class MainActivity extends AppCompatActivity implements ITasksView.Listener, IAddTaskView.Listener, ICoursesView.Listener, IAddCourseView.Listener {
 
     private IMainView mainView;  // keeps track of the main view
 
@@ -26,6 +26,21 @@ public class MainActivity extends AppCompatActivity implements ITasksView.Listen
 
     @Override
     public void onAddTask() {
-        this.mainView.displayFragment(new AddTaskView(this), false);
+        this.mainView.displayFragment(new AddTaskView(this), true);
+    }
+
+    @Override
+    public void onClickTaskPane() {
+        this.mainView.displayFragment(new CoursesView(this), true);
+    }
+
+    @Override
+    public void onAddCourse() {
+        this.mainView.displayFragment(new AddCourseView(this), true);
+    }
+
+    @Override
+    public void onClickCoursePane() {
+        this.mainView.displayFragment(new TasksView(this), true);
     }
 }

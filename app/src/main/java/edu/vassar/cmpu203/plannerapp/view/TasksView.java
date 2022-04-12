@@ -39,7 +39,17 @@ public class TasksView extends Fragment implements ITasksView{
                         TasksView.this.listener.onAddTask();
                     }
                 });
-        }
+
+        this.binding.paneName.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                TasksView.this.listener.onClickTaskPane();
+                binding.paneName.setText("COURSES");
+            }
+        });
+
+    }
 
     //@Override
     public View getRootView() {
