@@ -41,7 +41,7 @@
         android:backgroundTint="#00FFFFFF"
         android:text="Tasks"
         android:textColor="#FFFFFF"
-        android:textSize="30dp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toStartOf="@+id/addTask"
         app:layout_constraintStart_toEndOf="@+id/settings"
         app:layout_constraintTop_toTopOf="parent" />

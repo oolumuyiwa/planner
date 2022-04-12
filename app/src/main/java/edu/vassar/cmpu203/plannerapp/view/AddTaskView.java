@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -133,6 +134,17 @@ public class AddTaskView extends Fragment implements IAddTaskView, DatePickerDia
             }
         });
 
+        this.binding.courseDoneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                //get course name
+//                Editable courseNameEditable = AddTaskView.this.binding.addedNameInput.getText();
+//                String courseName = courseNameEditable.toString();
+//
+//                //get course code
+//                Editable courseCodeEditable = AddTaskView.this.binding.i
+            }
+        });
     }
 
     @Override

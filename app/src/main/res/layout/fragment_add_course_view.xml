@@ -123,13 +123,13 @@
         app:layout_constraintTop_toBottomOf="@id/courseSemesterSpinner" />
 
     <Switch
-        android:id="@+id/meetingTimePrompt"
+        android:id="@+id/noMeetingTime"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="8dp"
         android:background="@color/cardview_dark_background"
-        android:text="Does your course have a meeting time?"
+        android:text="No meeting time?"
         android:textColor="#DCDCDC"
         android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -145,7 +145,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#DCDCDC"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/meetingTimePrompt" />
+        app:layout_constraintTop_toBottomOf="@id/noMeetingTime" />
 
     <CheckBox
         android:id="@+id/sundayBtn"
@@ -236,6 +236,7 @@
         android:layout_marginLeft="150dp"
         android:layout_marginTop="8dp"
         android:ems="5"
+        android:inputType="time"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@id/startTimeDisplay"
         app:layout_constraintRight_toRightOf="parent"
@@ -259,6 +260,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:ems="5"
+        android:inputType="time"
         app:layout_constraintHorizontal_bias="0.813"
         app:layout_constraintLeft_toRightOf="@id/endTimeDisplay"
         app:layout_constraintRight_toRightOf="parent"

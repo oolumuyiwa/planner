@@ -1,5 +1,6 @@
 package edu.vassar.cmpu203.plannerapp.view;
 
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,8 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.TimePicker;
+
+import java.util.Calendar;
 
 import edu.vassar.cmpu203.plannerapp.R;
 import edu.vassar.cmpu203.plannerapp.databinding.FragmentAddCourseViewBinding;
@@ -59,6 +66,82 @@ public class AddCourseView extends Fragment implements IAddCourseView{
             @Override
             public void onNothingSelected(AdapterView<?> parent)
             {
+            }
+        });
+
+        Switch noMeetingTime = (Switch)  getView().findViewById(R.id.noMeetingTime);
+
+
+        noMeetingTime.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    getView().findViewById(R.id.meetingDaysDisplay).setVisibility(View.GONE);
+                    getView().findViewById(R.id.sundayBtn).setVisibility(View.GONE);
+                    getView().findViewById(R.id.mondayBtn).setVisibility(View.GONE);
+                    getView().findViewById(R.id.tuesdayBtn).setVisibility(View.GONE);
+                    getView().findViewById(R.id.wednesdayBtn).setVisibility(View.GONE);
+                    getView().findViewById(R.id.thursdayBtn).setVisibility(View.GONE);
+                    getView().findViewById(R.id.fridayBtn).setVisibility(View.GONE);
+                    getView().findViewById(R.id.saturdayBtn).setVisibility(View.GONE);
+                    getView().findViewById(R.id.startTimeDisplay).setVisibility(View.GONE);
+                    getView().findViewById(R.id.startTime).setVisibility(View.GONE);
+                    getView().findViewById(R.id.endTime).setVisibility(View.GONE);
+                    getView().findViewById(R.id.endTimeDisplay).setVisibility(View.GONE);
+                } else {
+
+                    getView().findViewById(R.id.meetingDaysDisplay).setVisibility(View.VISIBLE);
+                    getView().findViewById(R.id.sundayBtn).setVisibility(View.VISIBLE);
+                    getView().findViewById(R.id.mondayBtn).setVisibility(View.VISIBLE);
+                    getView().findViewById(R.id.tuesdayBtn).setVisibility(View.VISIBLE);
+                    getView().findViewById(R.id.wednesdayBtn).setVisibility(View.VISIBLE);
+                    getView().findViewById(R.id.thursdayBtn).setVisibility(View.VISIBLE);
+                    getView().findViewById(R.id.fridayBtn).setVisibility(View.VISIBLE);
+                    getView().findViewById(R.id.saturdayBtn).setVisibility(View.VISIBLE);
+                    getView().findViewById(R.id.startTimeDisplay).setVisibility(View.VISIBLE);
+                    getView().findViewById(R.id.startTime).setVisibility(View.VISIBLE);
+                    getView().findViewById(R.id.endTime).setVisibility(View.VISIBLE);
+                    getView().findViewById(R.id.endTimeDisplay).setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        EditText startTime = (EditText)  getView().findViewById(R.id.startTime);
+        startTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        binding.startTime.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Deadline Time");
+                mTimePicker.show();
+            }
+        });
+
+        EditText endTime = (EditText)  getView().findViewById(R.id.endTime);
+        endTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        binding.endTime.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Deadline Time");
+                mTimePicker.show();
             }
         });
 
