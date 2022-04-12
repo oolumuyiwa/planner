@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
+import java.util.Scanner;
 
 import edu.vassar.cmpu203.plannerapp.R;
 import edu.vassar.cmpu203.plannerapp.databinding.FragmentAddCourseViewBinding;
@@ -156,8 +157,13 @@ public class AddCourseView extends Fragment implements IAddCourseView{
                 Editable courseCodeEditable = AddCourseView.this.binding.addedCodeInput.getText();
                 String courseCode = courseCodeEditable.toString();
 
+
                 String semesterString = spinner.getSelectedItem().toString();
-                Semester courseSemester;
+                Scanner scanner = new Scanner(semesterString);
+//                String semSeason = scanner.next();
+//                while
+//                int semYear = scanner.nextInt();
+//                Semester courseSemester;
             }
         });
 
