@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        tools:context=".AboutActivity"
+
         android:padding="40dp"
         android:background="@color/cardview_dark_background">
 
@@ -188,7 +188,7 @@
             app:layout_constraintTop_toBottomOf="@id/taskTimeInput" />
 
         <EditText
-            android:id ="@+id/edtInput"
+            android:id ="@+id/additionalNotesInput"
             android:layout_width ="0dip"
             android:layout_height ="wrap_content"
             android:layout_weight ="1"
@@ -202,6 +202,16 @@
             app:layout_constraintTop_toBottomOf="@id/additionalNotesDisplay"
             android:scrollHorizontally="false" />
 
-
+        <Button
+            android:id="@+id/courseDoneButton"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/teal_700"
+            android:text="DONE"
+            android:textColor="@color/white"
+            android:layout_marginTop="50dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/additionalNotesInput"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
