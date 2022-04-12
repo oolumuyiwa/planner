@@ -236,7 +236,9 @@
         android:layout_marginLeft="150dp"
         android:layout_marginTop="8dp"
         android:ems="5"
+        android:textAlignment="center"
         android:inputType="time"
+        android:textColor="@color/white"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@id/startTimeDisplay"
         app:layout_constraintRight_toRightOf="parent"
@@ -260,6 +262,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:ems="5"
+        android:textColor="@color/white"
+        android:textAlignment="center"
         android:inputType="time"
         app:layout_constraintHorizontal_bias="0.813"
         app:layout_constraintLeft_toRightOf="@id/endTimeDisplay"
@@ -329,7 +333,7 @@
     app:layout_constraintTop_toBottomOf="@id/notesDisplay"/>
 
     <Button
-        android:id="@+id/newCourseDone"
+        android:id="@+id/courseDoneBtn"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:backgroundTint="@color/teal_700"

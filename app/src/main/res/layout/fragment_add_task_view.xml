@@ -203,7 +203,7 @@
             android:scrollHorizontally="false" />
 
         <Button
-            android:id="@+id/courseDoneButton"
+            android:id="@+id/taskDoneButton"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:backgroundTint="@color/teal_700"

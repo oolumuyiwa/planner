@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import edu.vassar.cmpu203.plannerapp.databinding.FragmentAddCourseViewBinding;
 import edu.vassar.cmpu203.plannerapp.databinding.FragmentAddTaskViewBinding;
 import edu.vassar.cmpu203.plannerapp.databinding.FragmentCoursesViewBinding;
 import edu.vassar.cmpu203.plannerapp.model.Course;
+import edu.vassar.cmpu203.plannerapp.model.Semester;
 
 
 public class AddCourseView extends Fragment implements IAddCourseView{
@@ -145,6 +147,20 @@ public class AddCourseView extends Fragment implements IAddCourseView{
             }
         });
 
+        this.binding.courseDoneBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Editable courseNameEditable = AddCourseView.this.binding.addedCourseNameInput.getText();
+                String courseName = courseNameEditable.toString();
+
+                Editable courseCodeEditable = AddCourseView.this.binding.addedCodeInput.getText();
+                String courseCode = courseCodeEditable.toString();
+
+                String semesterString = spinner.getSelectedItem().toString();
+                Semester courseSemester;
+            }
+        });
+
     }
 
     @Override
@@ -156,4 +172,6 @@ public class AddCourseView extends Fragment implements IAddCourseView{
     public void updateCourseDisplay(Course course) {
 
     }
+
+
 }

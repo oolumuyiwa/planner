@@ -134,7 +134,7 @@ public class AddTaskView extends Fragment implements IAddTaskView, DatePickerDia
             }
         });
 
-        this.binding.courseDoneButton.setOnClickListener(new View.OnClickListener() {
+        this.binding.taskDoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                //get course name
