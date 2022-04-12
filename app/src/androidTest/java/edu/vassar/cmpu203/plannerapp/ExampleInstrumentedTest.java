@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("edu.vassar.cmpu203.myapplication", appContext.getPackageName());
+        assertEquals("edu.vassar.cmpu203.plannerapp", appContext.getPackageName());
     }
 }
