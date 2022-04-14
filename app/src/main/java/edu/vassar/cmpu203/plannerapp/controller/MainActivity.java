@@ -4,13 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 import edu.vassar.cmpu203.plannerapp.R;
+import edu.vassar.cmpu203.plannerapp.model.Course;
 import edu.vassar.cmpu203.plannerapp.view.*;
 
 public class MainActivity extends AppCompatActivity implements ITasksView.Listener, IAddTaskView.Listener, ICoursesView.Listener, IAddCourseView.Listener {
 
     private IMainView mainView;  // keeps track of the main view
-
+    public static ArrayList<Course> allCourses = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

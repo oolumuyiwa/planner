@@ -459,8 +459,12 @@ public class Course {
     }
 
      */
+    public String toString(){
+        String res = this.name + ", " + this.code;
+        return res;
+    }
 
-    public String toString() {
+    public String toDetailedString() {
         String res = "";
         res += "Course name: " + this.name + "\n" + "Course code: " + this.code + "\n" + "Course semester: " + this.semester.toString() + "\n";
         if (tasks.size() == 0){
@@ -474,17 +478,31 @@ public class Course {
             }
         }
 
+        if (notes.length() < 1){
+            res += "Course notes: none" + "\n";
+        }
+        else{
+            res += "Course notes: " + this.notes + "\n";
+        }
+
+        if(room.length() < 1){
+            res += "Course room: None set" + "\n";
+        }
+        else{
+            res += "Course room: " + this.room + "\n";
+        }
         if(meetingTimes.size() == 0){
             res += "Course meeting times: none" + "\n";
         }
         else{
             res += "Course meeting times:" + "\n";
-            for(int i = 0; i < meetingTimes.size(); i++){
-                res += DmeetingTimes.get(i) + "\n";
+            for (int i = 0; i < meetingTimes.size(); i++){
+                res += meetingTimes.get(i).getLeft().toString() + " " + meetingTimes.get(i).getRight().toString();
             }
         }
         res += "\n";
         return res;
+
     }
 
 

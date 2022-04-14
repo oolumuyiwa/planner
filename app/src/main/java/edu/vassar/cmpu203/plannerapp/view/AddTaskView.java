@@ -26,7 +26,9 @@ import java.time.LocalTime;
 import java.util.Calendar;
 
 import edu.vassar.cmpu203.plannerapp.R;
+import edu.vassar.cmpu203.plannerapp.controller.MainActivity;
 import edu.vassar.cmpu203.plannerapp.databinding.FragmentAddTaskViewBinding;
+import edu.vassar.cmpu203.plannerapp.model.Course;
 import edu.vassar.cmpu203.plannerapp.model.Task;
 
 
@@ -47,6 +49,24 @@ public class AddTaskView extends Fragment implements IAddTaskView, DatePickerDia
         return this.binding.getRoot();
     }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        Spinner courseSpinner = (Spinner) getView().findViewById(R.id.courseSpinner);
+        ArrayAdapter<Course> courseArrayAdapter = new ArrayAdapter<Course>(getContext(), android.R.layout.simple_spinner_item, MainActivity.allCourses);
+        courseArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        courseSpinner.setAdapter(courseArrayAdapter);
+
+        courseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ((TextView) view).setTextColor(binding.createTaskDisplay.getTextColors());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         Spinner spinner = (Spinner) getView().findViewById(R.id.taskTypesSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.task_type_array, android.R.layout.simple_spinner_item);

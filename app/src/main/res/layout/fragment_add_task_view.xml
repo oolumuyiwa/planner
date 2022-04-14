@@ -69,22 +69,18 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/addedNameInput" />
 
-        <EditText
-            android:id="@+id/addedCourseInput"
-            android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/courseSpinner"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:elegantTextHeight="true"
-            android:ems="17"
-            android:hint="CLS 102"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:textColor="#DCDCDC"
-            android:textColorHint="#757575"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:minHeight="48dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/taskCourseDisplay" />
+
 
     <TextView
         android:id="@+id/taskTypeDisplay"
@@ -96,7 +92,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#DCDCDC"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addedCourseInput" />
+        app:layout_constraintTop_toBottomOf="@id/courseSpinner" />
 
     <Spinner
         android:id="@+id/taskTypesSpinner"
