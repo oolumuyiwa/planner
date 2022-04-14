@@ -40,6 +40,11 @@ public class MainActivity extends AppCompatActivity implements ITasksView.Listen
     }
 
     @Override
+    public void onAddCourseDone() {
+        this.mainView.displayFragment(new CoursesView(this), true);
+    }
+
+    @Override
     public void onClickCoursePane() {
         this.mainView.displayFragment(new TasksView(this), true);
     }
