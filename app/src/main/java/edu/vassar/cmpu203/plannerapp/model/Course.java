@@ -8,31 +8,34 @@ import java.util.ArrayList;
 public class Course {
 
     public String name;
-    public int code;
+    public String code;
     public Semester semester;
+    public String notes;
+    public String room;
     public ArrayList<Pair<LocalDateTime, LocalDateTime>> meetingTimes = new ArrayList<Pair<LocalDateTime, LocalDateTime>>();
     public ArrayList<String> DmeetingTimes = new ArrayList<String>();
     public ArrayList<Task> tasks = new ArrayList<Task>();
     public Pair<ArrayList<Pair<LocalDateTime, LocalDateTime>>, ArrayList<String>> meetingTimesWithDescriptions = new Pair<>(meetingTimes, DmeetingTimes);
 
-    public Course(String name, int code, Semester semester, ArrayList<String> DmeetingTimes, ArrayList<Pair<LocalDateTime, LocalDateTime>> meetingTimes) {
+    public Course(String name, String code, Semester semester, String notes, String room, ArrayList<Pair<LocalDateTime, LocalDateTime>> meetingTimes) {
         this.name = name;
         this.code = code;
         this.semester = semester;
-        this.DmeetingTimes = DmeetingTimes;
+        this.room = room;
+        this.notes = notes;
         this.meetingTimes = meetingTimes;
     }
 
     public Course() {
         this.name = "";
-        this.code = 0;
+        this.code = "";
     }
 
     public void setName(String name){
         this.name = name;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 

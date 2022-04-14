@@ -44,7 +44,7 @@ public class Controller {
                 int i = 0;
 
                 for (Course course : courses) {
-                    if (course.code == Integer.parseInt(scanner.nextLine())) {
+                    if (course.code.compareTo(scanner.nextLine()) == 0) {
                         editCourse(course);
                         i++;
                     }
@@ -92,7 +92,7 @@ public class Controller {
 
         //TODO throws exception if not a number
         System.out.println("Enter course code");
-        newCourse.code = Integer.parseInt(scanner.nextLine());
+        newCourse.code = scanner.nextLine();
 
         //TODO Exception in thread "main" java.util.NoSuchElementException
         System.out.println("Enter course semester");
@@ -157,7 +157,7 @@ public class Controller {
         }
 
         for (Course course : courses){
-            if (course.code  == Integer.parseInt(st)){
+            if (course.code  == st){
                 course.tasks.add(newTask);
                 newTask.associatedCourse = course;
             }
@@ -205,7 +205,7 @@ public class Controller {
                 c.setName(scanner.nextLine());
             } else if (st.toLowerCase().compareTo("code") == 0) {
                 System.out.println("Enter new course code");
-                c.setCode(Integer.parseInt(scanner.nextLine()));
+                c.setCode(scanner.nextLine());
             } else if (st.toLowerCase().compareTo("semester") == 0) {
                 System.out.println("Enter new course semester");
                 Semester newsem = new Semester(scanner.next(), scanner.nextInt());
@@ -254,7 +254,7 @@ public class Controller {
                 t.setAssociatedCourse(null);
             }
             for (Course c : courses){
-                if(c.code == Integer.parseInt(s)){
+                if(c.code == s){
                     t.setAssociatedCourse(c);
                 }
             }
