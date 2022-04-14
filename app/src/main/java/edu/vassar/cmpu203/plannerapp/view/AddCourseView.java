@@ -238,12 +238,11 @@ public class AddCourseView extends Fragment implements IAddCourseView{
 
         this.binding.courseDoneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-//                if (invalidInfo()) {
-//                    Snackbar snackbar = Snackbar.make(getView(), "Invalid Info. Please give complete information and try again.", Snackbar.LENGTH_LONG);
-//                    snackbar.show();
-//                } else
-                 if (timeIncorrect()) {
+                public void onClick(View view) {
+                if (invalidInfo()) {
+                    Snackbar snackbar = Snackbar.make(getView(), "Invalid Info. Please give complete information and try again.", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                } else if (timeIncorrect()) {
                     Snackbar snackbar = Snackbar.make(getView(), "Invalid time distance given. Check over and try again.", Snackbar.LENGTH_LONG);
                     snackbar.show();
                 } else {
@@ -344,17 +343,17 @@ public class AddCourseView extends Fragment implements IAddCourseView{
         return (endTime.isBefore(startTime));
     }
 
-//    public boolean invalidInfo(){
-//        boolean noName = AddCourseView.this.binding.addedCourseNameInput.getText().toString().length() < 1;
-//        boolean noCode = AddCourseView.this.binding.addedCodeInput.getText().toString().length() < 1;
-//        boolean noDaySelected = (AddCourseView.this.binding.sundayBtn.isChecked() == false) && (AddCourseView.this.binding.mondayBtn.isChecked() == false) && (AddCourseView.this.binding.tuesdayBtn.isChecked() == false)
-//                && (AddCourseView.this.binding.wednesdayBtn.isChecked() == false) && (AddCourseView.this.binding.thursdayBtn.isChecked() == false) && (AddCourseView.this.binding.fridayBtn.isChecked() == false)
-//                && (AddCourseView.this.binding.saturdayBtn.isChecked() == false);
-//        boolean invalidStartTimeInput = (AddCourseView.this.binding.startTime.getInputType() != InputType.TYPE_DATETIME_VARIATION_TIME) || (AddCourseView.this.binding.startTime.getText().toString().length() < 1);
-//        boolean invalidEndTimeInput = (AddCourseView.this.binding.endTime.getInputType() != InputType.TYPE_DATETIME_VARIATION_TIME) || (AddCourseView.this.binding.endTime.getText().toString().length() < 1);
-//        boolean invalidMeetingTime = (AddCourseView.this.binding.noMeetingTime.isChecked() == false) && noDaySelected;
-//        boolean invalidInfo = (noName || noCode || noDaySelected || invalidEndTimeInput || invalidMeetingTime || invalidStartTimeInput);
-//        return invalidInfo;
-//}
+    public boolean invalidInfo(){
+        boolean noName = AddCourseView.this.binding.addedCourseNameInput.getText().toString().length() < 1;
+        boolean noCode = AddCourseView.this.binding.addedCodeInput.getText().toString().length() < 1;
+        boolean noDaySelected = (AddCourseView.this.binding.sundayBtn.isChecked() == false) && (AddCourseView.this.binding.mondayBtn.isChecked() == false) && (AddCourseView.this.binding.tuesdayBtn.isChecked() == false)
+                && (AddCourseView.this.binding.wednesdayBtn.isChecked() == false) && (AddCourseView.this.binding.thursdayBtn.isChecked() == false) && (AddCourseView.this.binding.fridayBtn.isChecked() == false)
+                && (AddCourseView.this.binding.saturdayBtn.isChecked() == false);
+        boolean invalidStartTimeInput = (AddCourseView.this.binding.startTime.getInputType() != InputType.TYPE_DATETIME_VARIATION_TIME) || (AddCourseView.this.binding.startTime.getText().toString().length() < 1);
+        boolean invalidEndTimeInput = (AddCourseView.this.binding.endTime.getInputType() != InputType.TYPE_DATETIME_VARIATION_TIME) || (AddCourseView.this.binding.endTime.getText().toString().length() < 1);
+        boolean invalidMeetingTime = (AddCourseView.this.binding.noMeetingTime.isChecked() == false) && noDaySelected;
+        boolean invalidInfo = (noName || noCode || noDaySelected || invalidEndTimeInput || invalidMeetingTime || invalidStartTimeInput);
+        return invalidInfo;
+}
 
 }
