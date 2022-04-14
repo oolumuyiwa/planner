@@ -1,9 +1,7 @@
 package edu.vassar.cmpu203.plannerapp.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
 import java.util.ArrayList;
 
 import edu.vassar.cmpu203.plannerapp.R;
@@ -14,6 +12,7 @@ public class MainActivity extends AppCompatActivity implements ITasksView.Listen
 
     private IMainView mainView;  // keeps track of the main view
     public static ArrayList<Course> allCourses = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,14 +22,10 @@ public class MainActivity extends AppCompatActivity implements ITasksView.Listen
         setContentView(this.mainView.getRootView());
 
         this.mainView.displayFragment(new TasksView(this), true);
-
     }
-
 
     @Override
-    public void onAddTask() {
-        this.mainView.displayFragment(new AddTaskView(this), true);
-    }
+    public void onAddTask() { this.mainView.displayFragment(new AddTaskView(this), true); }
 
     @Override
     public void onClickTaskPane() {
