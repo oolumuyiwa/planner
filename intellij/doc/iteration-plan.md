@@ -11,3 +11,10 @@ The primary focus for the second iteration would be, in order of importance:
 * **removing course meeting time**: giving the user the ability to remove/change the meeting time of a course.
 * **sorting task by deadline**: giving the user the ability to sort their tasks chronologically, useful for 'Calendar View'
 * **sorting meeting times by date**: giving the user the ability to sort their classes chronologically.
+
+
+## Iteration 3 plan:
+The primary focus for the third iteration would be, in order of importance:
+* **data persistence:** allowing for information added to be saved over multiple app launches.
+* **bug fixes/ui updating:** the view/form for adding courses/tasks is unintuitive for seeing what information is required and must be added, more information on incorrect data entry should be given.
+* **other features:** adding semester and notification functionality, among others.
