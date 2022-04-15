@@ -17,6 +17,9 @@ import org.hamcrest.Matcher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 import edu.vassar.cmpu203.plannerapp.controller.MainActivity;
@@ -26,30 +29,58 @@ import edu.vassar.cmpu203.plannerapp.controller.MainActivity;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
+
 @RunWith(AndroidJUnit4.class)
-public class AddItemsInstTest {
+public class ExampleInstrumentedTest {
 
     @org.junit.Rule
     public ActivityScenarioRule<MainActivity> activityRule = new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void addItemsTest() {
-        // check that line items is empty at the start
-        Matcher<View> lineItemsMatcher = ViewMatchers.withId(R.id.addedNameInput).;
-        ViewInteraction lineItemsVi = Espresso.onView(lineItemsMatcher);
-        lineItemsVi.check(ViewAssertions.matches(ViewMatchers.withText("")));
+    public void addCourseTest() {
 
-        // add 10 units of guacamole
-        ViewInteraction nameInputVi = Espresso.onView(ViewMatchers.withId(R.id.nameInputText));
-        nameInputVi.perform(ViewActions.typeText("guacamole"));
+        //navigate to create course view
+        ViewInteraction paneVi = Espresso.onView(ViewMatchers.withId(R.id.paneName));
+        paneVi.perform(ViewActions.click());
 
-        ViewInteraction qtyInputVi = Espresso.onView(ViewMatchers.withId(R.id.qtyInputText));
-        qtyInputVi.perform(ViewActions.typeText("10"));
+        ViewInteraction addCourseVi = Espresso.onView(ViewMatchers.withId(R.id.addCourse));
+        addCourseVi.perform(ViewActions.click());
 
-        ViewInteraction addButtonVi = Espresso.onView(ViewMatchers.withId(R.id.addButton));
-        addButtonVi.perform(ViewActions.click());
+        // add course name
+        ViewInteraction addedCourseNameVi = Espresso.onView(ViewMatchers.withId(R.id.addedCourseNameInput));
+        addedCourseNameVi.perform(ViewActions.typeText("intro to computer science"));
 
-        // check that guacamole shows up in line items label
-        lineItemsVi.check(ViewAssertions.matches(ViewMatchers.withSubstring("guacamole")));
+        // add course code
+        ViewInteraction addedCodeVi = Espresso.onView(ViewMatchers.withId(R.id.addedCodeInput));
+        addedCodeVi.perform(ViewActions.typeText("CMPU 101"));
+
+        // click on "fall 2022" in spinner
+        ViewInteraction courseSemesterVi = Espresso.onView(ViewMatchers.withId(R.id.courseSemesterSpinner));
+        courseSemesterVi.perform(ViewActions.click());
+        Espresso.onData(instanceOf(String.class)).atPosition(1).perform(ViewActions.click());
+        //Espresso.onData(allOf(is(instanceOf(String.class)), is(selectionText))).perform(click());
+
+        //click on "meets on monday and wednesday"
+        ViewInteraction mondayVi = Espresso.onView(ViewMatchers.withId(R.id.mondayBtn));
+        mondayVi.perform(ViewActions.click());
+        ViewInteraction wednesdayVi = Espresso.onView(ViewMatchers.withId(R.id.wednesdayBtn));
+        wednesdayVi.perform(ViewActions.click());
+
+
+        //enter start and end time
+        ViewInteraction startVi = Espresso.onView(ViewMatchers.withId(R.id.startTime));
+        startVi.perform(ViewActions.typeText("1200"));
+        ViewInteraction endVi = Espresso.onView(ViewMatchers.withId(R.id.endTime));
+        endVi.perform(ViewActions.typeText("0115"));
+
+        //click done
+        ViewInteraction courseDoneVi = Espresso.onView(ViewMatchers.withId(R.id.courseDoneBtn));
+        courseDoneVi.perform(ViewActions.click());
+
+        // TODO check that course entry shows up in course view with proper parameters
+
+        // notes: tests fail due to finicky implementation of start/end time (requires double press?)
+        // also because invalid entry checking is wrong
+
     }
 }
