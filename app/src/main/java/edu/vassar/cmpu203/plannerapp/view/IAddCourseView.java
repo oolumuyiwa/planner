@@ -8,7 +8,7 @@ import edu.vassar.cmpu203.plannerapp.model.Task;
 public interface IAddCourseView {
     interface Listener{
         void onAddCourse();
-        void onAddCourseDone();}
+        void onAddCourseDone(Course course, ICoursesView coursesView);}
 
 
     View getRootView();
