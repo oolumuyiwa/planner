@@ -54,6 +54,7 @@ public class AddCourseView extends Fragment implements IAddCourseView{
     private FragmentAddCourseViewBinding binding;
     private IAddCourseView.Listener listener;
 
+
     public AddCourseView(Listener listener) {
         this.listener = listener;
     }
@@ -239,7 +240,7 @@ public class AddCourseView extends Fragment implements IAddCourseView{
         this.binding.courseDoneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
                 public void onClick(View view) {
-                if (invalidInfo()) {
+                if (validInfo() == false) {
                     Snackbar snackbar = Snackbar.make(getView(), "Invalid Info. Please give complete information and try again.", Snackbar.LENGTH_LONG);
                     snackbar.show();
                 } else if (timeIncorrect()) {
@@ -315,7 +316,8 @@ public class AddCourseView extends Fragment implements IAddCourseView{
                      Log.i("Check", String.valueOf(MainActivity.allCourses.contains(newCourse)));
                      Log.i("Fly as Shit", String.valueOf(MainActivity.allCourses));
 
-                    AddCourseView.this.listener.onAddCourseDone();
+
+
                 }
 
             }
@@ -343,17 +345,17 @@ public class AddCourseView extends Fragment implements IAddCourseView{
         return (endTime.isBefore(startTime));
     }
 
-    public boolean invalidInfo(){
-        boolean noName = AddCourseView.this.binding.addedCourseNameInput.getText().toString().length() < 1;
-        boolean noCode = AddCourseView.this.binding.addedCodeInput.getText().toString().length() < 1;
-        boolean noDaySelected = (AddCourseView.this.binding.sundayBtn.isChecked() == false) && (AddCourseView.this.binding.mondayBtn.isChecked() == false) && (AddCourseView.this.binding.tuesdayBtn.isChecked() == false)
-                && (AddCourseView.this.binding.wednesdayBtn.isChecked() == false) && (AddCourseView.this.binding.thursdayBtn.isChecked() == false) && (AddCourseView.this.binding.fridayBtn.isChecked() == false)
-                && (AddCourseView.this.binding.saturdayBtn.isChecked() == false);
-        boolean invalidStartTimeInput = (AddCourseView.this.binding.startTime.getInputType() != InputType.TYPE_DATETIME_VARIATION_TIME) || (AddCourseView.this.binding.startTime.getText().toString().length() < 1);
-        boolean invalidEndTimeInput = (AddCourseView.this.binding.endTime.getInputType() != InputType.TYPE_DATETIME_VARIATION_TIME) || (AddCourseView.this.binding.endTime.getText().toString().length() < 1);
-        boolean invalidMeetingTime = (AddCourseView.this.binding.noMeetingTime.isChecked() == false) && noDaySelected;
-        boolean invalidInfo = (noName || noCode || noDaySelected || invalidEndTimeInput || invalidMeetingTime || invalidStartTimeInput);
-        return invalidInfo;
+    public boolean validInfo(){
+        boolean filledName = AddCourseView.this.binding.addedCourseNameInput.getText().toString().length() > 1;
+        boolean filledCode = AddCourseView.this.binding.addedCodeInput.getText().toString().length() > 1;
+        boolean atLeastADaySelected = (AddCourseView.this.binding.sundayBtn.isChecked()) || (AddCourseView.this.binding.mondayBtn.isChecked()) || (AddCourseView.this.binding.tuesdayBtn.isChecked())
+                || (AddCourseView.this.binding.wednesdayBtn.isChecked()) || (AddCourseView.this.binding.thursdayBtn.isChecked()) || (AddCourseView.this.binding.fridayBtn.isChecked())
+                || (AddCourseView.this.binding.saturdayBtn.isChecked());
+        boolean validStartTimeInput = (AddCourseView.this.binding.startTime.getText().toString().length() > 1);
+        boolean validEndTimeInput = (AddCourseView.this.binding.endTime.getText().toString().length() > 1);
+        boolean validMeetingTime = (AddCourseView.this.binding.noMeetingTime.isChecked()) || atLeastADaySelected;
+        boolean validInfo = (filledName && filledCode && atLeastADaySelected && validEndTimeInput && validMeetingTime && validStartTimeInput);
+        return validInfo;
 }
 
 }
