@@ -54,6 +54,8 @@ public class ExampleInstrumentedTest {
         ViewInteraction addedCodeVi = Espresso.onView(ViewMatchers.withId(R.id.addedCodeInput));
         addedCodeVi.perform(ViewActions.typeText("CMPU 101"));
 
+        Espresso.closeSoftKeyboard();
+
         // click on "fall 2022" in spinner
         ViewInteraction courseSemesterVi = Espresso.onView(ViewMatchers.withId(R.id.courseSemesterSpinner));
         courseSemesterVi.perform(ViewActions.click());
@@ -65,7 +67,6 @@ public class ExampleInstrumentedTest {
         mondayVi.perform(ViewActions.click());
         ViewInteraction wednesdayVi = Espresso.onView(ViewMatchers.withId(R.id.wednesdayBtn));
         wednesdayVi.perform(ViewActions.click());
-
 
         //enter start and end time
         ViewInteraction startVi = Espresso.onView(ViewMatchers.withId(R.id.startTime));
