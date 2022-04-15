@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/courses_view"
     tools:context="edu.vassar.cmpu203.plannerapp.controller.MainActivity"
     android:background="@color/cardview_dark_background">
 
@@ -46,16 +47,20 @@
         app:layout_constraintStart_toEndOf="@+id/settings"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:id="@+id/coursesRecyclerView"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="80dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
 
-    </androidx.recyclerview.widget.RecyclerView>
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/coursesList"
+       app:layout_constraintTop_toTopOf="parent"
+       android:layout_marginTop="80dp"
+       android:textSize="18sp"
+       android:textColor="@color/white"
+       android:textIsSelectable="true"
+       android:textAlignment="center"
+       app:layout_constraintLeft_toLeftOf="parent"
+       app:layout_constraintRight_toRightOf="parent">
+   </TextView>
 
 
 

@@ -37,6 +37,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Scanner;
 
 import edu.vassar.cmpu203.plannerapp.R;
@@ -53,9 +54,10 @@ public class AddCourseView extends Fragment implements IAddCourseView{
 
     private FragmentAddCourseViewBinding binding;
     private IAddCourseView.Listener listener;
+    public List<Course> addedCourses = new ArrayList<>();
 
 
-    public AddCourseView(Listener listener) {
+    public AddCourseView(IAddCourseView.Listener listener) {
         this.listener = listener;
     }
 
@@ -82,7 +84,7 @@ public class AddCourseView extends Fragment implements IAddCourseView{
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
                 //Change the selected item's text color
-                ((TextView) view).setTextColor(binding.createCourseDisplay.getTextColors());
+                ((TextView)view).setTextColor(binding.createCourseDisplay.getTextColors());
             }
 
             @Override
@@ -312,11 +314,11 @@ public class AddCourseView extends Fragment implements IAddCourseView{
 
                     Course newCourse = new Course(courseName, courseCode, courseSemester, notes, roomInfo, meetingTimes);
                      Log.i("New course",newCourse.toDetailedString());
-                     MainActivity.allCourses.add(newCourse);
-                     Log.i("Check", String.valueOf(MainActivity.allCourses.contains(newCourse)));
-                     Log.i("Fly as Shit", String.valueOf(MainActivity.allCourses));
-
-
+                     addedCourses.add(newCourse);
+                     Log.i("Check", String.valueOf(addedCourses));
+                     Log.i("Fly as Shit", String.valueOf(addedCourses));
+                     AddCourseView.this.listener.onAddedCourse(newCourse);
+                    AddCourseView.this.listener.onAddCourseDone(addedCourses.get(0));
 
                 }
 

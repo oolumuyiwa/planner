@@ -2,6 +2,8 @@ package edu.vassar.cmpu203.plannerapp.view;
 
 import android.view.View;
 
+import java.util.List;
+
 import edu.vassar.cmpu203.plannerapp.model.Course;
 
 
@@ -12,5 +14,5 @@ public interface ICoursesView {
         void onClickCoursePane();}
 
     View getRootView();
-    void updateCourseDisplay(Course course);
+    void updateCourseDisplay(List<Course> course);
 }

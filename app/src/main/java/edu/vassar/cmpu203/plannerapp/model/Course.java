@@ -13,6 +13,8 @@ public class Course {
     public String notes;
     public String room;
     public ArrayList<Pair<LocalDateTime, LocalDateTime>> meetingTimes = new ArrayList<Pair<LocalDateTime, LocalDateTime>>();
+    public Pair<LocalDateTime, LocalDateTime> holderMeeting = new Pair<>(LocalDateTime.now(), LocalDateTime.now().withMinute(59));
+
     public ArrayList<String> DmeetingTimes = new ArrayList<String>();
     public ArrayList<Task> tasks = new ArrayList<Task>();
     public Pair<ArrayList<Pair<LocalDateTime, LocalDateTime>>, ArrayList<String>> meetingTimesWithDescriptions = new Pair<>(meetingTimes, DmeetingTimes);
@@ -23,6 +25,7 @@ public class Course {
         this.semester = semester;
         this.room = room;
         this.notes = notes;
+        meetingTimes.add(holderMeeting);
         this.meetingTimes = meetingTimes;
     }
 

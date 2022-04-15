@@ -18,7 +18,7 @@ public class Task {
         this.associatedCourse = associatedCourse;
         this.deadline = deadline;
         this.notes = notes;
-        this.id = id;
+
     }
 
     public Task() {

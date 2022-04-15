@@ -21,8 +21,13 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 import edu.vassar.cmpu203.plannerapp.R;
@@ -50,7 +55,8 @@ public class AddTaskView extends Fragment implements IAddTaskView, DatePickerDia
     }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         Spinner courseSpinner = (Spinner) getView().findViewById(R.id.courseSpinner);
-        ArrayAdapter<Course> courseArrayAdapter = new ArrayAdapter<Course>(getContext(), android.R.layout.simple_spinner_item, MainActivity.allCourses);
+        MainActivity mainActivity = (MainActivity) getActivity();
+        ArrayAdapter<Course> courseArrayAdapter = new ArrayAdapter<Course>(getContext(), android.R.layout.simple_spinner_item, mainActivity.getCourses());
         courseArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         courseSpinner.setAdapter(courseArrayAdapter);
@@ -67,7 +73,7 @@ public class AddTaskView extends Fragment implements IAddTaskView, DatePickerDia
             }
         });
 
-        Spinner spinner = (Spinner) getView().findViewById(R.id.taskTypesSpinner);
+       Spinner spinner = (Spinner) getView().findViewById(R.id.taskTypesSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.task_type_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -94,7 +100,8 @@ public class AddTaskView extends Fragment implements IAddTaskView, DatePickerDia
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
-                binding.taskDateInput.setText(dateFormatter.format(newDate.getTime()));
+                String date = monthOfYear + "/" + dayOfMonth + "/" + year;
+                binding.taskDateInput.setText(date);
             }
 
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
@@ -146,7 +153,15 @@ public class AddTaskView extends Fragment implements IAddTaskView, DatePickerDia
                 mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        binding.taskTimeInput.setText( selectedHour + ":" + selectedMinute);
+                        String selectedHourSt = "" + selectedHour;
+                        if (selectedHour < 10){
+                            selectedHourSt = "0" + selectedHourSt;
+                        }
+                        String selectedMinuteSt = "" + selectedMinute;
+                        if (selectedMinute < 10){
+                            selectedMinuteSt = "0" + selectedMinuteSt;
+                        }
+                        binding.taskTimeInput.setText( selectedHourSt + ":" + selectedMinuteSt);
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Deadline Time");
@@ -157,25 +172,86 @@ public class AddTaskView extends Fragment implements IAddTaskView, DatePickerDia
         this.binding.taskDoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                //get course name
-//                Editable courseNameEditable = AddTaskView.this.binding.addedNameInput.getText();
-//                String courseName = courseNameEditable.toString();
-//
-//                //get course code
-//                Editable courseCodeEditable = AddTaskView.this.binding.i
+                if (validInfo() == false) {
+                    Snackbar snackbar = Snackbar.make(getView(), "Invalid Info. Please give complete information and try again.", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }else  if (prePresentDeadline()){
+                    Snackbar snackbar = Snackbar.make(getView(), "Come on, the deadline can't be in the past.", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+                else {
+                //get task name
+                Editable taskNameEditable = AddTaskView.this.binding.addedNameInput.getText();
+                String taskName = taskNameEditable.toString();
+
+                LocalDate deadlineDate = LocalDate.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+                    if (AddTaskView.this.binding.noDeadline.isChecked()) {
+                        deadlineDate = LocalDate.MAX;
+                    }
+                    else{
+                        deadlineDate = LocalDate.parse(AddTaskView.this.binding.taskDateInput.getText().toString(), formatter);
+                    }
+
+                    LocalTime deadlineTime = LocalTime.now();
+                    DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("H:mm");
+                    if(AddTaskView.this.binding.addDeadlineTime.isChecked()){
+                        deadlineTime = LocalTime.parse(AddTaskView.this.binding.taskTimeInput.getText().toString(), formatter2);
+                    }
+                    LocalDateTime deadline = LocalDateTime.of(deadlineDate, deadlineTime);
+                    Course associatedCourse = new Course();
+                    if (!(courseSpinner.getSelectedItem().getClass() == Course.class)){
+                        associatedCourse = null;
+                    }
+                    else{
+                        associatedCourse = (Course) courseSpinner.getSelectedItem();
+                    }
+                    String type = spinner.getSelectedItem().toString();
+                    String notes = AddTaskView.this.binding.additionalNotesInput.getText().toString();
+                    Task newTask = new Task(taskName, type, associatedCourse, deadline, notes);
+                    if(associatedCourse != null) {
+                        associatedCourse.tasks.add(newTask);
+                    }
+                    AddTaskView.this.listener.onAddedTask(newTask);
+                    AddTaskView.this.listener.onAddTaskDone(newTask);
+                }
             }
         });
+
+    }
+    public boolean prePresentDeadline(){
+        LocalDate deadlineDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+        deadlineDate = LocalDate.parse(AddTaskView.this.binding.taskDateInput.getText().toString(), formatter);
+        LocalTime deadlineTime = LocalTime.now();
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("H:mm");
+        deadlineTime = LocalTime.parse(AddTaskView.this.binding.taskTimeInput.getText().toString(), formatter2);
+        LocalDateTime deadline = LocalDateTime.of(deadlineDate, deadlineTime);
+        boolean res = deadline.isBefore(LocalDateTime.now());
+        return res;
     }
 
+    public boolean validInfo(){
+        boolean filledName = AddTaskView.this.binding.addedNameInput.getText().toString().length() > 1;
+        boolean flippedSwitch = AddTaskView.this.binding.noDeadline.isChecked();
+        boolean filledDate = (AddTaskView.this.binding.taskDateInput.getText().toString().length() > 1);
+        if (flippedSwitch){
+            filledDate = true;
+        }
+        boolean validTimeInput = (AddTaskView.this.binding.taskTimeInput.getText().toString().length() > 1);
+        boolean flippedAddTimeSwitch = AddTaskView.this.binding.noDeadline.isChecked();
+        if(flippedAddTimeSwitch == false){
+            validTimeInput = true;
+        }
+        boolean validInfo = (filledName && validTimeInput && filledDate);
+        return validInfo;
+    }
     @Override
     public View getRootView() {
         return null;
     }
 
-    @Override
-    public void updateTaskDisplay(Task task) {
 
-    }
 
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {

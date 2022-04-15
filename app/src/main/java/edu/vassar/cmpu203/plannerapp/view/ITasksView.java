@@ -2,6 +2,8 @@ package edu.vassar.cmpu203.plannerapp.view;
 
 import android.view.View;
 
+import java.util.List;
+
 import edu.vassar.cmpu203.plannerapp.model.Task;
 
 public interface ITasksView {
@@ -11,5 +13,5 @@ public interface ITasksView {
         void onClickTaskPane();}
 
     View getRootView();
-    void updateTaskDisplay(Task task);
+    void updateTaskDisplay(List<Task> tasks);
 }

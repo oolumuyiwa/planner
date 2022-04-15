@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    card_view:cardCornerRadius="6dp"
+    android:backgroundTint="@color/teal_700"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/individualCourseLayout"
+        android:padding="20dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/teal_700">
+
+
+
+        <TextView
+            android:id="@+id/courseCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CLS 202"
+            android:maxLines ="5"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/individualCourseLayout"
+            android:textColor="@color/white"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            tools:layout_editor_absoluteX="11dp"
+            tools:layout_editor_absoluteY="30dp" />
+
+        <TextView
+            android:id="@+id/courseName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/courseCode"
+            app:layout_constraintLeft_toLeftOf="@id/individualCourseLayout"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="Connecting Discrete Mathematics"
+            android:textColor="@color/white"
+            android:maxLines ="5"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
+
+        <TextView
+            android:id="@+id/meetingDays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/courseName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="Meeting Days: Tuesday, Thursday"
+            android:textColor="@color/white"
+            android:maxLines ="5"
+            android:textSize="15sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
+
+        <TextView
+            android:id="@+id/meetingTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/meetingDays"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="Meeting Time: 11:30 - 13:00"
+            android:textColor="@color/white"
+            android:maxLines ="5"
+            android:textSize="15sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
+
+        <TextView
+            android:id="@+id/courseSemester"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/meetingTime"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="Summer 2020"
+            android:textColor="@color/white"
+            android:maxLines ="5"
+            android:textSize="17sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
+
+        <TextView
+            android:id="@+id/courseRoom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/courseSemester"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="Rocky 135"
+            android:textColor="@color/white"
+            android:maxLines ="5"
+            android:textSize="17sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
+
+        <TextView
+            android:id="@+id/courseNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/courseRoom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="About Math"
+            android:textColor="@color/white"
+            android:maxLines ="5"
+            android:textSize="17sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+    <!--&lt;!&ndash;View&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:id="@+id/divider"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_height="1dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;        android:layout_marginTop="20dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;        app:layout_constraintTop_toBottomOf="@id/courseNotes"&ndash;&gt;-->
+    <!--&lt;!&ndash;        app:layout_constraintLeft_toLeftOf="parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;        app:layout_constraintRight_toRightOf="parent" />&ndash;&gt;-->
+    <!--    &lt;!&ndash;    <TextView&ndash;&gt;-->
+    <!--    &lt;!&ndash;        android:id="@+id/associatedTasks"&ndash;&gt;-->
+    <!--    &lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+    <!--    &lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--    &lt;!&ndash;        app:layout_constraintTop_toBottomOf="@id/meetingTime"&ndash;&gt;-->
+    <!--    &lt;!&ndash;        app:layout_constraintLeft_toLeftOf="parent"&ndash;&gt;-->
+    <!--    &lt;!&ndash;        app:layout_constraintRight_toRightOf="parent"&ndash;&gt;-->
+    <!--    &lt;!&ndash;        android:text="Associated Tasks: "&ndash;&gt;-->
+    <!--    &lt;!&ndash;        android:textColor="@color/white"&ndash;&gt;-->
+    <!--    &lt;!&ndash;        android:maxLines ="5"&ndash;&gt;-->
+    <!--    &lt;!&ndash;        android:textSize="15sp"&ndash;&gt;-->
+    <!--    &lt;!&ndash;        android:layout_marginTop="8dp"&ndash;&gt;-->
+    <!--    &lt;!&ndash;        android:layout_marginLeft="15dp"&ndash;&gt;-->
+    <!--    &lt;!&ndash;        android:layout_marginRight="15dp"/>&ndash;&gt;-->
+    <!--    &lt;!&ndash;    android:padding="20dp"&ndash;&gt;-->

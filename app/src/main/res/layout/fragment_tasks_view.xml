@@ -45,6 +45,20 @@
         app:layout_constraintEnd_toStartOf="@+id/addTask"
         app:layout_constraintStart_toEndOf="@+id/settings"
         app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tasksList"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="80dp"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textIsSelectable="true"
+        android:textAlignment="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+    </TextView>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
