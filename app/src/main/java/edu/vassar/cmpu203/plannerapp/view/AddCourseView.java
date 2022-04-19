@@ -70,9 +70,13 @@ public class AddCourseView extends Fragment implements IAddCourseView{
         return this.binding.getRoot();
     }
 
+    //Code for actions to be carried out when view is created
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Spinner spinner = (Spinner) getView().findViewById(R.id.courseSemesterSpinner);
+
+        //creates an array adapter for the semester and sets the content for the semester spinner based
+        //from the semester array
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.semesters_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -131,7 +135,7 @@ public class AddCourseView extends Fragment implements IAddCourseView{
             }
         });
 
-
+// Filter for time input.
 //        InputFilter[] timeFilter = new InputFilter[1];
 //
 //        timeFilter[0] = new InputFilter() {
@@ -356,7 +360,7 @@ public class AddCourseView extends Fragment implements IAddCourseView{
         boolean validStartTimeInput = (AddCourseView.this.binding.startTime.getText().toString().length() > 1);
         boolean validEndTimeInput = (AddCourseView.this.binding.endTime.getText().toString().length() > 1);
         boolean validMeetingTime = (AddCourseView.this.binding.noMeetingTime.isChecked()) || atLeastADaySelected;
-        boolean validInfo = (filledName && filledCode && atLeastADaySelected && validEndTimeInput && validMeetingTime && validStartTimeInput);
+        boolean validInfo = (filledName && filledCode && validEndTimeInput && validMeetingTime && validStartTimeInput);
         return validInfo;
 }
 
