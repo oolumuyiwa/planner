@@ -1,41 +1,42 @@
 # Domain Model For Planner App
-```plantuml
-@startuml
+
+```plantuml @startuml
+
 title Domain Model
 
-
-'classes
 class Course{
-name
-icon
-code
-semester
+    name
+    icon
+    code
+    semester
 }
+
 class meetingTime{
-time
-weekday(s)
+    time
+    weekday(s)
 }
 
 class Task{
-name
-type
-}
-class Deadline{
-time
-date
-}
-class Student{
-name
-}
-class TasksPane{
-Tasks
-}
-class CoursesPane{
-Courses
-}
-class Calendar{
+    name
+    type
 }
 
+class Deadline{
+    time
+    date
+}
+
+class Student{
+    name
+}
+
+class TasksPane{
+    Tasks
+}
+
+class CoursesPane{
+    Courses
+}
 
 'associations
  Student "1" - "1..*" Course : \tTakes\t\t
@@ -43,8 +44,6 @@ class Calendar{
  Course "1" - "1..*" meetingTime : \tContains\t\t
  Student "1" - "1..*" Task : \tIs-Assigned\t\t
  Task "1" -down- "0..1" Deadline : \tContains\t\t
- Calendar "1" -left- "1..*" Deadline : \tUses\t\t
- Calendar "1" - "1..*" meetingTime : \tIs-Used-By\t\t
  Task "1..*" -left- "1" TasksPane : \tLists\t\t
  Course "1..*" -right- "1" CoursesPane : \tIs-Listed-In\t\t
 @enduml

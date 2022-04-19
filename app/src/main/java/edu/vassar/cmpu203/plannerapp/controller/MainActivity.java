@@ -17,11 +17,13 @@ import edu.vassar.cmpu203.plannerapp.model.Semester;
 import edu.vassar.cmpu203.plannerapp.model.Task;
 import edu.vassar.cmpu203.plannerapp.view.*;
 
-public class MainActivity extends AppCompatActivity implements ITasksView.Listener, IAddTaskView.Listener, IAddCourseView.Listener, ICoursesView.Listener{
+public class MainActivity extends AppCompatActivity
+        implements ITasksView.Listener, IAddTaskView.Listener, IAddCourseView.Listener, ICoursesView.Listener{
 
-    private IMainView mainView;  // keeps track of the main view
-//    public ArrayList<Pair<LocalDateTime, LocalDateTime>> holderArrayList = new ArrayList<>();
-//    public Course holder = new Course("Holder", "HOL 102", new Semester("Summer", 2020), "Notes", "Room",  holderArrayList);
+    // keeps track of the main view
+    private IMainView mainView;
+
+    //allows for new courses/tasks to be added to an array
     private List<Course> allCourses = new ArrayList<>();
     private List<Task> allTasks = new ArrayList<>();
 
@@ -33,34 +35,33 @@ public class MainActivity extends AppCompatActivity implements ITasksView.Listen
     }
 
     @Override
+    //creates the first view that the user sees on app open after refresh
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         this.mainView = new MainView(this);
         setContentView(this.mainView.getRootView());
-
         this.mainView.displayFragment(new TasksView(this), true);
-
     }
 
 
     @Override
+    //returns to TaskView
     public void onAddTaskDone(Task task) {
+
         String allC2String = String.valueOf(allTasks);
         Bundle argsBundle = TasksView.makeArgsBundle(allC2String);
         this.mainView.displayFragment(new TasksView(this), true);
     }
 
     @Override
-    public void onAddTaskDone() {
-
-    }
-
-    @Override
+    //adds created task to array of allTasks
     public void onAddedTask(Task task) {
         allTasks.add(task);
     }
 
     @Override
+    //activates on add button click, opens up AddTaskView screen
     public void onAddTask() {
         this.mainView.displayFragment(new AddTaskView(this), true);
     }
@@ -69,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements ITasksView.Listen
     public void onClickTaskPane() {
         this.mainView.displayFragment(new CoursesView(this), true);
     }
-
 
     @Override
     public void onAddedCourse(Course course) {
@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements ITasksView.Listen
 
     }
 
-
     @Override
     public void onAddCourse() {
         this.mainView.displayFragment(new AddCourseView(this), true);
@@ -95,6 +94,4 @@ public class MainActivity extends AppCompatActivity implements ITasksView.Listen
     public void onClickCoursePane() {
         this.mainView.displayFragment(new TasksView(this), true);
     }
-
-
 }

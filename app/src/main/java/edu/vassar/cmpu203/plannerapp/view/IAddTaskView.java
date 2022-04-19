@@ -9,8 +9,6 @@ public interface IAddTaskView {
     interface Listener{
         void onAddTaskDone(Task task);
 
-        void onAddTaskDone();
-
         void onAddedTask(Task task);
     }
 

@@ -8,6 +8,7 @@ import edu.vassar.cmpu203.plannerapp.view.AddTaskView;
 import edu.vassar.cmpu203.plannerapp.view.CoursesView;
 import edu.vassar.cmpu203.plannerapp.view.TasksView;
 
+//currently not in use, for future iterations
 public class PlannerAppFragFactory extends FragmentFactory {
 
     private MainActivity controller;
