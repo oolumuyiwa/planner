@@ -37,9 +37,7 @@ import edu.vassar.cmpu203.plannerapp.model.Course;
 import edu.vassar.cmpu203.plannerapp.model.Task;
 
 
-public class AddTaskView extends Fragment
-        implements IAddTaskView, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
-
+public class AddTaskView extends Fragment implements IAddTaskView, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     private FragmentAddTaskViewBinding binding;
     private IAddTaskView.Listener listener;
 
@@ -55,10 +53,14 @@ public class AddTaskView extends Fragment
         this.binding = FragmentAddTaskViewBinding.inflate(inflater);
         return this.binding.getRoot();
     }
-
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        //Spinner in taskview for all available courses
         Spinner courseSpinner = (Spinner) getView().findViewById(R.id.courseSpinner);
+
+        //getActivity() couldn't be called as a standalone activity, needed initialization
         MainActivity mainActivity = (MainActivity) getActivity();
+
+        //creates an array adapter for the arrayLists added
         ArrayAdapter<Course> courseArrayAdapter = new ArrayAdapter<Course>(getContext(), android.R.layout.simple_spinner_item, mainActivity.getCourses());
         courseArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -76,7 +78,10 @@ public class AddTaskView extends Fragment
             }
         });
 
-        Spinner spinner = (Spinner) getView().findViewById(R.id.taskTypesSpinner);
+        //Spinner for all available task types
+       Spinner spinner = (Spinner) getView().findViewById(R.id.taskTypesSpinner);
+
+       //creates adapter for array of all given task types
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.task_type_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -97,8 +102,10 @@ public class AddTaskView extends Fragment
             }
         });
 
+        //Calendar for datePicker
         final Calendar newCalendar = Calendar.getInstance();
-        DateFormat dateFormatter = DateFormat.getDateInstance();
+
+        //DatePicker dialog for more interactive UI
         DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 Calendar newDate = Calendar.getInstance();
@@ -111,6 +118,7 @@ public class AddTaskView extends Fragment
         Switch noDeadline = (Switch)  getView().findViewById(R.id.noDeadline);
 
 
+        //switch for if user wants a task deadline
         noDeadline.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
@@ -124,14 +132,17 @@ public class AddTaskView extends Fragment
             }
         });
 
+        //the input editText for task date
         EditText taskDateInput = (EditText) getView().findViewById(R.id.taskDateInput);
         taskDateInput.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //to display the  date Picker dialog
                 datePickerDialog.show();
             }
         });
 
+        //Switch for if user wants a deadline time
         Switch addDeadlineTime = (Switch) getView().findViewById(R.id.addDeadlineTime);
         addDeadlineTime.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -145,6 +156,7 @@ public class AddTaskView extends Fragment
             }
         });
 
+        //input edittext for adding deadline time
         EditText taskTimeInput = (EditText)  getView().findViewById(R.id.taskTimeInput);
         taskTimeInput.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,6 +165,8 @@ public class AddTaskView extends Fragment
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
                 TimePickerDialog mTimePicker;
+
+                //creates and displays time picker
                 mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
@@ -175,18 +189,23 @@ public class AddTaskView extends Fragment
         this.binding.taskDoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //checks if complete and valid info has been added
                 if (validInfo() == false) {
                     Snackbar snackbar = Snackbar.make(getView(), "Invalid Info. Please give complete information and try again.", Snackbar.LENGTH_LONG);
                     snackbar.show();
-                }else  if (prePresentDeadline()){
+                }
+                //checks if deadline added is before present time
+                else if (prePresentDeadline()){
                     Snackbar snackbar = Snackbar.make(getView(), "Come on, the deadline can't be in the past.", Snackbar.LENGTH_LONG);
                     snackbar.show();
                 }
+                //info should be valid at this point
                 else {
                 //get task name
                 Editable taskNameEditable = AddTaskView.this.binding.addedNameInput.getText();
                 String taskName = taskNameEditable.toString();
 
+                //get and set the deadline date for the new task
                 LocalDate deadlineDate = LocalDate.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
                     if (AddTaskView.this.binding.noDeadline.isChecked()) {
@@ -195,13 +214,14 @@ public class AddTaskView extends Fragment
                     else{
                         deadlineDate = LocalDate.parse(AddTaskView.this.binding.taskDateInput.getText().toString(), formatter);
                     }
-
+                    //get and set the deadline date for the new task
                     LocalTime deadlineTime = LocalTime.now();
                     DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("H:mm");
                     if(AddTaskView.this.binding.addDeadlineTime.isChecked()){
                         deadlineTime = LocalTime.parse(AddTaskView.this.binding.taskTimeInput.getText().toString(), formatter2);
                     }
                     LocalDateTime deadline = LocalDateTime.of(deadlineDate, deadlineTime);
+                    //get and set the associated course for the new task
                     Course associatedCourse = new Course();
                     if (!(courseSpinner.getSelectedItem().getClass() == Course.class)){
                         associatedCourse = null;
@@ -209,12 +229,16 @@ public class AddTaskView extends Fragment
                     else{
                         associatedCourse = (Course) courseSpinner.getSelectedItem();
                     }
+                    //get and set the task type for the new task
                     String type = spinner.getSelectedItem().toString();
+
+                    //get and set the task notes for the new task
                     String notes = AddTaskView.this.binding.additionalNotesInput.getText().toString();
                     Task newTask = new Task(taskName, type, associatedCourse, deadline, notes);
                     if(associatedCourse != null) {
                         associatedCourse.tasks.add(newTask);
                     }
+                    //listener methods for added task
                     AddTaskView.this.listener.onAddedTask(newTask);
                     AddTaskView.this.listener.onAddTaskDone(newTask);
                 }
@@ -222,6 +246,7 @@ public class AddTaskView extends Fragment
         });
 
     }
+    //checks if the deadline added is before the present time
     public boolean prePresentDeadline(){
         LocalDate deadlineDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
@@ -234,6 +259,7 @@ public class AddTaskView extends Fragment
         return res;
     }
 
+    //checks if valid info was given
     public boolean validInfo(){
         boolean filledName = AddTaskView.this.binding.addedNameInput.getText().toString().length() > 1;
         boolean flippedSwitch = AddTaskView.this.binding.noDeadline.isChecked();
@@ -249,14 +275,22 @@ public class AddTaskView extends Fragment
         boolean validInfo = (filledName && validTimeInput && filledDate);
         return validInfo;
     }
+
+    //required method for any fragment
     @Override
     public View getRootView() {
         return null;
     }
 
+
+    //required methods for date Picker and time Picker
     @Override
-    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {}
+    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+    }
 
     @Override
-    public void onTimeSet(TimePicker timePicker, int i, int i1) {}
+    public void onTimeSet(TimePicker timePicker, int i, int i1) {
+
+    }
 }
