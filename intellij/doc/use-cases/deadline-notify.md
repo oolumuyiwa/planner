@@ -3,8 +3,8 @@
 | Section | Comment
 | --------- | ---------
 | Use case name | Notification on Task Deadline
-| Scope | Android system
-| Level | User goal
+| Scope | Android system and Within editing/creating tasks
+| Level | Subfunction
 | Primary Actor | Student using the application
 | Stakeholders and interest | Students looking to plan academic work in their schedule.
 | Preconditions | Student already has a preexisting task with a deadline added as well as a data entry specifying when the user would like to be notified, relative to the deadline.

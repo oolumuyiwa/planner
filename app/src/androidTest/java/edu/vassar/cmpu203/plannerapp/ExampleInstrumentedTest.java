@@ -39,7 +39,7 @@ public class ExampleInstrumentedTest {
     @Test
     public void addCourseTest() {
 
-        //navigate to create course view
+        // navigate to create course view
         ViewInteraction paneVi = Espresso.onView(ViewMatchers.withId(R.id.paneName));
         paneVi.perform(ViewActions.click());
 
@@ -54,27 +54,28 @@ public class ExampleInstrumentedTest {
         ViewInteraction addedCodeVi = Espresso.onView(ViewMatchers.withId(R.id.addedCodeInput));
         addedCodeVi.perform(ViewActions.typeText("CMPU 101"));
 
-        Espresso.closeSoftKeyboard();
+        //might be useful when trying to press buttons under the keyboard
+        //Espresso.closeSoftKeyboard();
 
         // click on "fall 2022" in spinner
         ViewInteraction courseSemesterVi = Espresso.onView(ViewMatchers.withId(R.id.courseSemesterSpinner));
         courseSemesterVi.perform(ViewActions.click());
         Espresso.onData(instanceOf(String.class)).atPosition(1).perform(ViewActions.click());
-        //Espresso.onData(allOf(is(instanceOf(String.class)), is(selectionText))).perform(click());
+        // Espresso.onData(allOf(is(instanceOf(String.class)), is(selectionText))).perform(click());
 
-        //click on "meets on monday and wednesday"
+        // click on "meets on monday and wednesday"
         ViewInteraction mondayVi = Espresso.onView(ViewMatchers.withId(R.id.mondayBtn));
         mondayVi.perform(ViewActions.click());
         ViewInteraction wednesdayVi = Espresso.onView(ViewMatchers.withId(R.id.wednesdayBtn));
         wednesdayVi.perform(ViewActions.click());
 
-        //enter start and end time
+        // enter start and end time
         ViewInteraction startVi = Espresso.onView(ViewMatchers.withId(R.id.startTime));
         startVi.perform(ViewActions.typeText("1200"));
         ViewInteraction endVi = Espresso.onView(ViewMatchers.withId(R.id.endTime));
         endVi.perform(ViewActions.typeText("0115"));
 
-        //click done
+        // click done
         ViewInteraction courseDoneVi = Espresso.onView(ViewMatchers.withId(R.id.courseDoneBtn));
         courseDoneVi.perform(ViewActions.click());
 

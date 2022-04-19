@@ -50,33 +50,33 @@ public class Controller {
                     }
                 }
 
-                if(i == 0){
+                if (i == 0) {
                     System.out.println("No course found with code");
-                } else{
+                } else {
                     System.out.println("Course successfully edited");
                 }
-            } else if (command.toLowerCase().compareTo("edit task") == 0){
+            } else if (command.toLowerCase().compareTo("edit task") == 0) {
 
                 System.out.println("Enter the id of the task you want to edit");
                 String sinput = scanner.nextLine();
                 int i = 0;
 
                 for (Task t : tasks) {
-                    if (t.id == Integer.parseInt(sinput)){
+                    if (t.id == Integer.parseInt(sinput)) {
                         editTask(t);
                         i++;
                     }
                 }
 
-                if(i == 0){
+                if (i == 0) {
                     System.out.println("No task found with id");
-                } else{
+                } else {
                     System.out.println("Task successfully edited");
                 }
             } else if (command.toLowerCase().compareTo("quit") == 0) {
                 System.out.println("Thank you for using the planner app.");
                 break;
-            } else{
+            } else {
                 System.out.println("Invalid input. Please enter any of the valid commands.");
             }
         }
@@ -116,14 +116,14 @@ public class Controller {
                 String time = str.substring(4, 15);
                 int recurrences = Integer.parseInt(str.substring(16));
                 newCourse.setMeetingTime(name, time, recurrences);
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("Invalid input. Please try again.");
             }
         }
         courses.add(newCourse);
     }
 
-    public static void addTask(){
+    public static void addTask() {
 
         Scanner scanner = new Scanner(System.in);
         Task newTask = new Task();
@@ -138,13 +138,13 @@ public class Controller {
         String str = scanner.nextLine();
 
         //TODO Exception in thread "main" java.time.format.DateTimeParseException
-        if (str.toLowerCase().compareTo("no deadline") == 0){
+        if (str.toLowerCase().compareTo("no deadline") == 0) {
             newTask.deadline = null;
         }
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             newTask.deadline = LocalDateTime.parse(str, formatter);
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please refer to instructions and try again.");
         }
 
@@ -152,12 +152,12 @@ public class Controller {
         System.out.println("Enter the code of associated course for this task or 'none' if it's not associated with any course");
         String st = scanner.nextLine();
 
-        if (st.toLowerCase().compareTo("none") == 0){
+        if (st.toLowerCase().compareTo("none") == 0) {
             newTask.associatedCourse = null;
         }
 
-        for (Course course : courses){
-            if (course.code  == st){
+        for (Course course : courses) {
+            if (course.code == st) {
                 course.tasks.add(newTask);
                 newTask.associatedCourse = course;
             }
@@ -168,22 +168,22 @@ public class Controller {
         tasks.add(newTask);
     }
 
-    public static void listCourses(){
+    public static void listCourses() {
 
-        if (courses.size() == 0){
+        if (courses.size() == 0) {
             System.out.println("No courses in the system :( \n");
-        } else{
-            for (int i = 0; i < courses.size(); i++){
-                System.out.println(courses.get(i).toString() +"\n");
+        } else {
+            for (int i = 0; i < courses.size(); i++) {
+                System.out.println(courses.get(i).toString() + "\n");
             }
         }
     }
 
-    public static void listTasks(){
-        if (tasks.size() == 0){
+    public static void listTasks() {
+        if (tasks.size() == 0) {
             System.out.println("No tasks in the system :( \n");
-        } else{
-            for (int i = 0; i < tasks.size(); i++){
+        } else {
+            for (int i = 0; i < tasks.size(); i++) {
                 System.out.println(tasks.get(i).toString() + "\n");
             }
         }
@@ -195,7 +195,7 @@ public class Controller {
 
         while (true) {
 
-            System.out.println("Enter the component of" + c.name + " " + c.code +  " you want to edit: 'name', 'code', 'task', or 'semester'. Enter 'done' if you're done editing.");
+            System.out.println("Enter the component of" + c.name + " " + c.code + " you want to edit: 'name', 'code', 'task', or 'semester'. Enter 'done' if you're done editing.");
             String st = scanner.nextLine();
 
             if (st.toLowerCase().compareTo("done") == 0) {
@@ -232,10 +232,10 @@ public class Controller {
         }
     }
 
-    public static void editTask(Task t){
+    public static void editTask(Task t) {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the component you want to edit of the" + t.name + " " + t.type + " with id "+ t.id + ": 'name', 'type', 'course', 'notes' or 'deadline'. Enter 'done' if you're done editing.");
+        System.out.println("Enter the component you want to edit of the" + t.name + " " + t.type + " with id " + t.id + ": 'name', 'type', 'course', 'notes' or 'deadline'. Enter 'done' if you're done editing.");
         String st = scanner.nextLine();
 
         if (st.toLowerCase().compareTo("name") == 0) {
@@ -247,30 +247,30 @@ public class Controller {
         } else if (st.toLowerCase().compareTo("notes") == 0) {
             System.out.println("Enter new course semester");
             t.setNotes(scanner.nextLine());
-        } else if (st.toLowerCase().compareTo("course") == 0){
+        } else if (st.toLowerCase().compareTo("course") == 0) {
             System.out.println("Enter code of new associated course if there's one or 'none' if there's none.");
             String s = scanner.nextLine();
-            if(s.toLowerCase().compareTo("none") == 0){
+            if (s.toLowerCase().compareTo("none") == 0) {
                 t.setAssociatedCourse(null);
             }
-            for (Course c : courses){
-                if(c.code == s){
+            for (Course c : courses) {
+                if (c.code == s) {
                     t.setAssociatedCourse(c);
                 }
             }
-        } else if(st.toLowerCase().compareTo("deadline") == 0){
+        } else if (st.toLowerCase().compareTo("deadline") == 0) {
 
             System.out.println("Enter the new deadline in yyyy-mm-dd hh:mm format, or enter 'no deadline' if there isn't one");
             String str = scanner.nextLine();
 
-            if (str.toLowerCase().compareTo("no deadline") == 0){
+            if (str.toLowerCase().compareTo("no deadline") == 0) {
                 t.setDeadline(null);
             }
 
             try {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
                 t.setDeadline(LocalDateTime.parse(str, formatter));
-            } catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please refer to instructions and try again.");
             }
 
@@ -278,70 +278,4 @@ public class Controller {
             System.out.println("Invalid input. Try again.");
         }
     }
-
-    /*
-    ITERATION 2 ROUGH WORKINGS:
-    public static void editCourse(Course c) {
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
-            System.out.println("Enter the course component you want to edit: 'name', 'code', 'meeting times', 'task', or 'semester'. Enter 'done' if you're done editing.");
-            String st = scanner.nextLine();
-            if (st.toLowerCase().compareTo("done") == 0){
-                break;
-            }
-            else if (st.toLowerCase().compareTo("name") == 0) {
-                System.out.println("Enter new course name");
-                c.setName(scanner.nextLine());
-
-            } else if (st.toLowerCase().compareTo("code") == 0) {
-                System.out.println("Enter new course code");
-                c.setCode(Integer.parseInt(scanner.nextLine()));
-
-            } else if (st.toLowerCase().compareTo("semester") == 0) {
-                System.out.println("Enter new course semester");
-                Semester newsem = new Semester(scanner.next(), scanner.nextInt());
-                c.setSemester(newsem);
-
-            } else if (st.toLowerCase().compareTo("task") == 0) {
-                System.out.println("Enter the name of the task you want to edit");
-                String tName = scanner.nextLine();
-                int i = 0;
-                for (Task task : c.tasks) {
-                    String taskName = task.name.toLowerCase();
-                    if (tName.toLowerCase().compareTo(taskName) == 0) {
-                        editTask(task);
-                    }
-                    i++;
-                }
-                if (i == 0) {
-                    System.out.println("No task found with name.");
-                }
-
-            }
-            else if (st.toLowerCase().compareTo("meeting times") == 0) {
-                System.out.println("Enter the meeting time you want removed with the number of recurrences for your course with space-seperated input in the manner specified in the following examples: Tue 13:00-13:50 10, Mon 08:00-15:00 5. ");
-            try {
-                String str = scanner.nextLine();
-                if (str.toLowerCase().compareTo("done") == 0) {
-
-                }
-                String name = str.substring(0, 3);
-                String time = str.substring(4, 15);
-                int recurrences = Integer.parseInt(str.substring(16));
-                c.removeMeetingTime(name, time, recurrences);
-            }catch (Exception e){
-                System.out.println("Invalid input. Please try again.");
-            }
-
-            }
-            else{
-                System.out.println("Invalid input. Please try again.");
-            }
-
-        }
-    }
-
- */
-
 }
