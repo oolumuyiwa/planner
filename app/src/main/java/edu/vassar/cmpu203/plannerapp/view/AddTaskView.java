@@ -37,7 +37,9 @@ import edu.vassar.cmpu203.plannerapp.model.Course;
 import edu.vassar.cmpu203.plannerapp.model.Task;
 
 
-public class AddTaskView extends Fragment implements IAddTaskView, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+public class AddTaskView extends Fragment
+        implements IAddTaskView, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+
     private FragmentAddTaskViewBinding binding;
     private IAddTaskView.Listener listener;
 
@@ -53,6 +55,7 @@ public class AddTaskView extends Fragment implements IAddTaskView, DatePickerDia
         this.binding = FragmentAddTaskViewBinding.inflate(inflater);
         return this.binding.getRoot();
     }
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         Spinner courseSpinner = (Spinner) getView().findViewById(R.id.courseSpinner);
         MainActivity mainActivity = (MainActivity) getActivity();
@@ -73,7 +76,7 @@ public class AddTaskView extends Fragment implements IAddTaskView, DatePickerDia
             }
         });
 
-       Spinner spinner = (Spinner) getView().findViewById(R.id.taskTypesSpinner);
+        Spinner spinner = (Spinner) getView().findViewById(R.id.taskTypesSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.task_type_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -251,15 +254,9 @@ public class AddTaskView extends Fragment implements IAddTaskView, DatePickerDia
         return null;
     }
 
-
+    @Override
+    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {}
 
     @Override
-    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-
-    }
-
-    @Override
-    public void onTimeSet(TimePicker timePicker, int i, int i1) {
-
-    }
+    public void onTimeSet(TimePicker timePicker, int i, int i1) {}
 }

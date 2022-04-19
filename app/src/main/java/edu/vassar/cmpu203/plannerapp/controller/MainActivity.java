@@ -37,18 +37,15 @@ public class MainActivity extends AppCompatActivity
     @Override
     //creates the first view that the user sees on app open after refresh
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         this.mainView = new MainView(this);
         setContentView(this.mainView.getRootView());
         this.mainView.displayFragment(new TasksView(this), true);
     }
 
-
     @Override
     //returns to TaskView
     public void onAddTaskDone(Task task) {
-
         String allC2String = String.valueOf(allTasks);
         Bundle argsBundle = TasksView.makeArgsBundle(allC2String);
         this.mainView.displayFragment(new TasksView(this), true);
