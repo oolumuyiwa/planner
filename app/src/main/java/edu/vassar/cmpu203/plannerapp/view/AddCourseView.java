@@ -97,6 +97,7 @@ public class AddCourseView extends Fragment implements IAddCourseView{
             }
         });
 
+        //switch for if user wants no meeting time
         Switch noMeetingTime = (Switch)  getView().findViewById(R.id.noMeetingTime);
 
 
@@ -105,6 +106,7 @@ public class AddCourseView extends Fragment implements IAddCourseView{
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    //removes all day checkboxes and related text views
                     getView().findViewById(R.id.meetingDaysDisplay).setVisibility(View.GONE);
                     getView().findViewById(R.id.sundayBtn).setVisibility(View.GONE);
                     getView().findViewById(R.id.mondayBtn).setVisibility(View.GONE);
@@ -185,11 +187,15 @@ public class AddCourseView extends Fragment implements IAddCourseView{
 //                return allowEdit ? null : "";
 //            }
 //        };
+//   startTime.setFilters(new InputFilter[]{timeFilter[0]});
+
+   //input edit text for user start time
         EditText startTime = (EditText)  getView().findViewById(R.id.startTime);
-     //   startTime.setFilters(new InputFilter[]{timeFilter[0]});
+
         startTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //creates and displays time picker dialog for more interactive UI
                 Calendar mcurrentTime = Calendar.getInstance();
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
@@ -215,11 +221,14 @@ public class AddCourseView extends Fragment implements IAddCourseView{
 
 
 
-        EditText endTime = (EditText)  getView().findViewById(R.id.endTime);
+
 //        endTime.setFilters(new InputFilter[]{timeFilter[0]});
+        //input edit text for user end time
+        EditText endTime = (EditText)  getView().findViewById(R.id.endTime);
         endTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //creates and displays time picker dialog for more interactive UI
                 Calendar mcurrentTime = Calendar.getInstance();
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
@@ -246,28 +255,35 @@ public class AddCourseView extends Fragment implements IAddCourseView{
         this.binding.courseDoneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
                 public void onClick(View view) {
+                // checks if the course has valid info
                 if (validInfo() == false) {
                     Snackbar snackbar = Snackbar.make(getView(), "Invalid Info. Please give complete information and try again.", Snackbar.LENGTH_LONG);
                     snackbar.show();
-                } else if (timeIncorrect()) {
+                }
+                //checks if the times given is before the present time
+                else if (timeIncorrect()) {
                     Snackbar snackbar = Snackbar.make(getView(), "Invalid time distance given. Check over and try again.", Snackbar.LENGTH_LONG);
                     snackbar.show();
-                } else {
+                }
+                //at this point, course info must be valid
+                else {
+                    //gets name of new course
                     Editable courseNameEditable = AddCourseView.this.binding.addedCourseNameInput.getText();
                     String courseName = courseNameEditable.toString();
 
+                    //gets code of new course
                     Editable courseCodeEditable = AddCourseView.this.binding.addedCodeInput.getText();
                     String courseCode = courseCodeEditable.toString();
 
-
+                    //gets semester of new course
                     String semesterString = spinner.getSelectedItem().toString();
                     Scanner scanner = new Scanner(semesterString);
                     String semSeason = scanner.next();
-
                     int semYear = scanner.nextInt();
                     Semester courseSemester = new Semester(semSeason, semYear);
 
 
+                    // gets meeting times of new course
                     ArrayList<Pair<LocalDateTime, LocalDateTime>> meetingTimes = new ArrayList<>();
                     CheckBox[] daysOfTheWeek = new CheckBox[]{AddCourseView.this.binding.fridayBtn, AddCourseView.this.binding.mondayBtn,
                             AddCourseView.this.binding.tuesdayBtn, AddCourseView.this.binding.wednesdayBtn, AddCourseView.this.binding.thursdayBtn,
@@ -310,19 +326,22 @@ public class AddCourseView extends Fragment implements IAddCourseView{
                             }
                         }
                     }
+
+                    //gets room of new course
                     Editable roomEditable = AddCourseView.this.binding.addedRoomInput.getText();
                     String roomInfo = roomEditable.toString();
 
+                    //gets notes of new course
                     Editable notesEditable = AddCourseView.this.binding.notesInput.getText();
                     String notes = notesEditable.toString();
 
+                    //creates new course
                     Course newCourse = new Course(courseName, courseCode, courseSemester, notes, roomInfo, meetingTimes);
                      Log.i("New course",newCourse.toDetailedString());
                      addedCourses.add(newCourse);
                      Log.i("Check", String.valueOf(addedCourses));
-                     Log.i("Fly as Shit", String.valueOf(addedCourses));
                      AddCourseView.this.listener.onAddedCourse(newCourse);
-                    AddCourseView.this.listener.onAddCourseDone(addedCourses.get(0));
+                     AddCourseView.this.listener.onAddCourseDone(addedCourses.get(0));
 
                 }
 
@@ -336,10 +355,8 @@ public class AddCourseView extends Fragment implements IAddCourseView{
         return null;
     }
 
-    @Override
-    public void updateCourseDisplay(Course course) {
 
-    }
+    //checks if time is incorrect
     public boolean timeIncorrect(){
         Editable startTimeEditable = AddCourseView.this.binding.startTime.getText();
         String startTimeSt = startTimeEditable.toString();
@@ -351,6 +368,7 @@ public class AddCourseView extends Fragment implements IAddCourseView{
         return (endTime.isBefore(startTime));
     }
 
+    //checks if given info is valid
     public boolean validInfo(){
         boolean filledName = AddCourseView.this.binding.addedCourseNameInput.getText().toString().length() > 1;
         boolean filledCode = AddCourseView.this.binding.addedCodeInput.getText().toString().length() > 1;

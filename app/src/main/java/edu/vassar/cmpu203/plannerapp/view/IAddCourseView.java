@@ -12,5 +12,5 @@ public interface IAddCourseView {
 
 
     View getRootView();
-    void updateCourseDisplay(Course course);
+
 }
