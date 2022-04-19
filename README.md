@@ -49,7 +49,7 @@ Similarly, you can navigate to the Add Course pane when the Courses pane is acti
 The main method to run the program is located within the MainActivity class.
 
 ### Iteration 3
-//TODO
+TODO
 
 
 
