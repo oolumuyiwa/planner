@@ -49,7 +49,24 @@ Similarly, you can navigate to the Add Course pane when the Courses pane is acti
 The main method to run the program is located within the MainActivity class.
 
 ### Iteration 3
-TODO
+For the final iteration, local persistence has been added to keep course/task information after discarding the application from RAM.
 
+There were also some general bug fixes and other minor changes.
+
+At this point, the application features a good amount of features that would indicate that it is minimally viable, which are:
+* creation of a task, featuring parameters of a name, associated course, type of task, as well as optional parameters of a deadline, a due time, and any additional notes
+* creation of a course, featuring a name, course code, associated semester, and optional parameters of a meeting time, meeting days of the week, classroom location, and additional notes
+
+Both of these are viewable on a view pane of their own, which is switchable through tapping on the button on the middle of the top bar and new tasks/courses can be created through pressing the top right 'add' button on their corresponding pane.
+
+Along with this, tasks/courses can be removed by clicking the 'trash' icon on the top left.
+  
+### Possible Future Iterations
+
+For future iterations, other features and changes can be implemented to further develop our application
+* a general UI overhaul now that we have experienced using the application for a while, as well as getting over the developmental stage
+* implementing push notifications either prior or on the time that tasks are due
+* implementing the ability to edit a task, as the current option to making changes in tasks is to delete and recreate them
+* general bug fixes
 
 
