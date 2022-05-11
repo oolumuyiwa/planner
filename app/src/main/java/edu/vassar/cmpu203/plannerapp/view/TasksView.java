@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.vassar.cmpu203.plannerapp.controller.MainActivity;
@@ -66,6 +67,14 @@ public class TasksView extends Fragment implements ITasksView{
             public void onClick(View view) {
                 TasksView.this.listener.onClickTaskPane();
                 binding.paneName.setText("COURSES");
+            }
+        });
+
+        this.binding.deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivity.library.setAllTasks(new ArrayList<>());
+                updateTaskDisplay(mainActivity.library.getTasks());
             }
         });
 

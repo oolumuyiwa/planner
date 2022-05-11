@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.vassar.cmpu203.plannerapp.R;
@@ -74,6 +75,13 @@ public class CoursesView extends Fragment implements ICoursesView {
             @Override
             public void onClick(View view) {
                 CoursesView.this.listener.onClickCoursePane();
+            }
+        });
+        this.binding.deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainActivity.library.setAllCourses(new ArrayList<>());
+                updateCourseDisplay(mainActivity.library.getCourses());
             }
         });
     }

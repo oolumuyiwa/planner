@@ -112,4 +112,11 @@ public Library(){}
         return res;
     }
 
+    public void setAllCourses(List<Course> allCourses) {
+        this.allCourses = allCourses;
+    }
+
+    public void setAllTasks(List<Task> allTasks) {
+        this.allTasks = allTasks;
+    }
 }
