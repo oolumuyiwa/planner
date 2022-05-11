@@ -1,11 +1,12 @@
 package edu.vassar.cmpu203.plannerapp.model;
 
+import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 
-public class Course {
+public class Course implements Serializable {
 
     public String name;
     public String code;
@@ -290,6 +291,7 @@ public class Course {
                 res += meetingTimes.get(i).getLeft().toString() + " " + meetingTimes.get(i).getRight().toString();
             }
         }
+        res += "(-------------------**----------------)";
         res += "\n";
         return res;
 

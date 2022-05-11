@@ -1,6 +1,8 @@
 package edu.vassar.cmpu203.plannerapp.model;
 
-public class Semester {
+import java.io.Serializable;
+
+public class Semester implements Serializable {
 
     public String semname;
     public int semyear;

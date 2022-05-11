@@ -1,8 +1,9 @@
 package edu.vassar.cmpu203.plannerapp.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Task {
+public class Task implements Serializable {
 
     public String name;
     public String type;

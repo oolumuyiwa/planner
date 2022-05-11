@@ -61,11 +61,10 @@ public class AddTaskView extends Fragment implements IAddTaskView, DatePickerDia
         MainActivity mainActivity = (MainActivity) getActivity();
 
         //creates an array adapter for the arrayLists added
-        ArrayAdapter<Course> courseArrayAdapter = new ArrayAdapter<Course>(getContext(), android.R.layout.simple_spinner_item, mainActivity.getCourses());
+        ArrayAdapter<Course> courseArrayAdapter = new ArrayAdapter<Course>(getContext(), android.R.layout.simple_spinner_item, mainActivity.library.getCourses());
         courseArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         courseSpinner.setAdapter(courseArrayAdapter);
-
         courseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

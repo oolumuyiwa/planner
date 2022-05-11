@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -62,7 +63,7 @@ public class CoursesView extends Fragment implements ICoursesView {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         MainActivity mainActivity = (MainActivity) getActivity();
-        updateCourseDisplay(mainActivity.getCourses());
+        updateCourseDisplay(mainActivity.library.getCourses());
         this.binding.addCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,7 +92,14 @@ public class CoursesView extends Fragment implements ICoursesView {
 
     @Override
     public void updateCourseDisplay(List<Course> courses) {
-        String res = "";
+        MainActivity mainActivity = (MainActivity) getActivity();
+//        Bundle argsBundle = getArguments();
+//        if (argsBundle != null) {
+//            String allCourses = argsBundle.getCharSequence("ALL COURSES").toString();
+//            this.binding.coursesList.setText(allCourses);
+//        }
+
+                String res = "";
         for (int i = 0; i < courses.size(); i++){
             Course course = courses.get(i);
             int holder = i + 1;
@@ -128,15 +136,11 @@ public class CoursesView extends Fragment implements ICoursesView {
             res += "----------------><-----------------" + "\n";
 
         }
+
         this.binding.coursesList.setText(res);
+    }
 
-
-
-
-//        ArrayAdapter<Course> courseArrayAdapter =
-//                new ArrayAdapter<Course>(getContext(), android.R.layout.simple_list_item_1, mainActivity.getCourses());
-//        // Set The Adapter
-//        coursesList.setAdapter(courseArrayAdapter);
+    public void createCards(List<Course> courses){
 
     }
 }

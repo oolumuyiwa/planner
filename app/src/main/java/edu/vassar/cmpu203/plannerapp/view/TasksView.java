@@ -52,7 +52,7 @@ public class TasksView extends Fragment implements ITasksView{
     //@Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         MainActivity mainActivity = (MainActivity) getActivity();
-        updateTaskDisplay(mainActivity.getTasks());
+        updateTaskDisplay(mainActivity.library.getTasks());
         this.binding.addTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,8 +78,6 @@ public class TasksView extends Fragment implements ITasksView{
 
     @Override
     public void updateTaskDisplay(List<Task> tasks) {
-
-
         String res = "";
         for (int i = 0; i < tasks.size(); i++){
             Task task = tasks.get(i);
@@ -108,7 +106,7 @@ public class TasksView extends Fragment implements ITasksView{
                     res += String.valueOf(dateTime.getMinute()) + "\n";
                 }
                 res += dateTime.getDayOfWeek().toString() + ", " + dateTime.getDayOfMonth() + " " + dateTime.getMonth().toString()
-                + " " + dateTime.getYear() + "\n";
+                        + " " + dateTime.getYear() + "\n";
 
             }
 

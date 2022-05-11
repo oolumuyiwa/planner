@@ -10,14 +10,14 @@
 
 
     <ImageButton
-        android:id="@+id/settings"
+        android:id="@+id/deleteBtn"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@color/cardview_dark_background"
         android:elevation="@dimen/cardview_default_elevation"
         android:paddingHorizontal="@dimen/cardview_default_elevation"
         android:paddingVertical="@dimen/cardview_default_elevation"
-        android:src="@drawable/ic_baseline_settings_24"
+        android:src="@drawable/ic_baseline_delete_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></ImageButton>
 
@@ -44,7 +44,7 @@
         android:textColor="#FFFFFF"
         android:textSize="20dp"
         app:layout_constraintEnd_toStartOf="@+id/addCourse"
-        app:layout_constraintStart_toEndOf="@+id/settings"
+        app:layout_constraintStart_toEndOf="@+id/deleteBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
 

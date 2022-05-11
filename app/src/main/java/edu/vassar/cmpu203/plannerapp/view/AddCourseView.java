@@ -257,92 +257,17 @@ public class AddCourseView extends Fragment implements IAddCourseView{
                 public void onClick(View view) {
                 // checks if the course has valid info
                 if (validInfo() == false) {
-                    Snackbar snackbar = Snackbar.make(getView(), "Invalid Info. Please give complete information and try again.", Snackbar.LENGTH_LONG);
-                    snackbar.show();
-                }
-                //checks if the times given is before the present time
-                else if (timeIncorrect()) {
-                    Snackbar snackbar = Snackbar.make(getView(), "Invalid time distance given. Check over and try again.", Snackbar.LENGTH_LONG);
-                    snackbar.show();
+                    if (timeIncorrect()) {
+                        Snackbar snackbar = Snackbar.make(getView(), "Invalid time distance given. Check over and try again.", Snackbar.LENGTH_LONG);
+                        snackbar.show();
+                    } else {
+                        Snackbar snackbar = Snackbar.make(getView(), "Invalid Info. Please give complete information and try again.", Snackbar.LENGTH_LONG);
+                        snackbar.show();
+                    }
                 }
                 //at this point, course info must be valid
                 else {
-                    //gets name of new course
-                    Editable courseNameEditable = AddCourseView.this.binding.addedCourseNameInput.getText();
-                    String courseName = courseNameEditable.toString();
-
-                    //gets code of new course
-                    Editable courseCodeEditable = AddCourseView.this.binding.addedCodeInput.getText();
-                    String courseCode = courseCodeEditable.toString();
-
-                    //gets semester of new course
-                    String semesterString = spinner.getSelectedItem().toString();
-                    Scanner scanner = new Scanner(semesterString);
-                    String semSeason = scanner.next();
-                    int semYear = scanner.nextInt();
-                    Semester courseSemester = new Semester(semSeason, semYear);
-
-
-                    // gets meeting times of new course
-                    ArrayList<Pair<LocalDateTime, LocalDateTime>> meetingTimes = new ArrayList<>();
-                    CheckBox[] daysOfTheWeek = new CheckBox[]{AddCourseView.this.binding.fridayBtn, AddCourseView.this.binding.mondayBtn,
-                            AddCourseView.this.binding.tuesdayBtn, AddCourseView.this.binding.wednesdayBtn, AddCourseView.this.binding.thursdayBtn,
-                            AddCourseView.this.binding.saturdayBtn, AddCourseView.this.binding.sundayBtn};
-                    Editable startTimeEditable = AddCourseView.this.binding.startTime.getText();
-                    String startTimeSt = startTimeEditable.toString();
-
-                    Editable endTimeEditable = AddCourseView.this.binding.endTime.getText();
-                    String endTimeSt = endTimeEditable.toString();
-
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("H:mm");
-
-                    if (binding.noMeetingTime.isChecked() == false) {
-                        for (CheckBox day : daysOfTheWeek) {
-                            DayOfWeek dayOfWeek = DayOfWeek.of(1);
-                            if (String.valueOf(day.getText()).toLowerCase().compareTo("mon") == 0) {
-                                dayOfWeek = DayOfWeek.MONDAY;
-                            } else if (String.valueOf(day.getText()).toLowerCase().compareTo("tue") == 0) {
-                                dayOfWeek = DayOfWeek.TUESDAY;
-                            } else if (String.valueOf(day.getText()).toLowerCase().compareTo("wed") == 0) {
-                                dayOfWeek = DayOfWeek.WEDNESDAY;
-                            } else if (String.valueOf(day.getText()).toLowerCase().compareTo("thu") == 0) {
-                                dayOfWeek = DayOfWeek.THURSDAY;
-                            } else if (String.valueOf(day.getText()).toLowerCase().compareTo("fri") == 0) {
-                                dayOfWeek = DayOfWeek.FRIDAY;
-                            } else if (String.valueOf(day.getText()).toLowerCase().compareTo("sat") == 0) {
-                                dayOfWeek = DayOfWeek.SATURDAY;
-                            } else if (String.valueOf(day.getText()).toLowerCase().compareTo("sun") == 0) {
-                                dayOfWeek = DayOfWeek.SUNDAY;
-                            }
-                            LocalDate date = LocalDate.now();
-                            date = date.with(TemporalAdjusters.next(dayOfWeek));
-                            if (day.isChecked()) {
-                                LocalTime startTime = LocalTime.parse(startTimeSt, formatter);
-                                LocalTime endTime = LocalTime.parse(endTimeSt, formatter);
-                                LocalDateTime startDateTime = LocalDateTime.of(date, startTime);
-                                LocalDateTime endDateTime = LocalDateTime.of(date, endTime);
-                                Pair<LocalDateTime, LocalDateTime> startAndEnd = new Pair<>(startDateTime, endDateTime);
-                                meetingTimes.add(startAndEnd);
-                            }
-                        }
-                    }
-
-                    //gets room of new course
-                    Editable roomEditable = AddCourseView.this.binding.addedRoomInput.getText();
-                    String roomInfo = roomEditable.toString();
-
-                    //gets notes of new course
-                    Editable notesEditable = AddCourseView.this.binding.notesInput.getText();
-                    String notes = notesEditable.toString();
-
-                    //creates new course
-                    Course newCourse = new Course(courseName, courseCode, courseSemester, notes, roomInfo, meetingTimes);
-                     Log.i("New course",newCourse.toDetailedString());
-                     addedCourses.add(newCourse);
-                     Log.i("Check", String.valueOf(addedCourses));
-                     AddCourseView.this.listener.onAddedCourse(newCourse);
-                     AddCourseView.this.listener.onAddCourseDone(addedCourses.get(0));
-
+                   getInfoAndCreateCourse();
                 }
 
             }
@@ -362,6 +287,9 @@ public class AddCourseView extends Fragment implements IAddCourseView{
         String startTimeSt = startTimeEditable.toString();
         Editable endTimeEditable = AddCourseView.this.binding.endTime.getText();
         String endTimeSt = endTimeEditable.toString();
+        if ((startTimeSt.length() < 1) || (endTimeSt.length() < 1)){
+        return true;
+        }
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("H:mm");
         LocalTime startTime = LocalTime.parse(startTimeSt, formatter);
         LocalTime endTime = LocalTime.parse(endTimeSt, formatter);
@@ -377,9 +305,92 @@ public class AddCourseView extends Fragment implements IAddCourseView{
                 || (AddCourseView.this.binding.saturdayBtn.isChecked());
         boolean validStartTimeInput = (AddCourseView.this.binding.startTime.getText().toString().length() > 1);
         boolean validEndTimeInput = (AddCourseView.this.binding.endTime.getText().toString().length() > 1);
-        boolean validMeetingTime = (AddCourseView.this.binding.noMeetingTime.isChecked()) || atLeastADaySelected;
+        boolean validMeetingTime =  atLeastADaySelected;
+        if(AddCourseView.this.binding.noMeetingTime.isChecked()){
+            validMeetingTime = true;
+            validStartTimeInput = true;
+            validEndTimeInput = true;
+        }
         boolean validInfo = (filledName && filledCode && validEndTimeInput && validMeetingTime && validStartTimeInput);
         return validInfo;
+}
+
+public void getInfoAndCreateCourse(){
+    Editable courseNameEditable = AddCourseView.this.binding.addedCourseNameInput.getText();
+    String courseName = courseNameEditable.toString();
+
+    //gets code of new course
+    Editable courseCodeEditable = AddCourseView.this.binding.addedCodeInput.getText();
+    String courseCode = courseCodeEditable.toString();
+
+    //gets semester of new course
+    Spinner spinner = (Spinner) getView().findViewById(R.id.courseSemesterSpinner);
+    String semesterString = spinner.getSelectedItem().toString();
+    Scanner scanner = new Scanner(semesterString);
+    String semSeason = scanner.next();
+    int semYear = scanner.nextInt();
+    Semester courseSemester = new Semester(semSeason, semYear);
+
+
+    // gets meeting times of new course
+    ArrayList<Pair<LocalDateTime, LocalDateTime>> meetingTimes = new ArrayList<>();
+    CheckBox[] daysOfTheWeek = new CheckBox[]{AddCourseView.this.binding.fridayBtn, AddCourseView.this.binding.mondayBtn,
+            AddCourseView.this.binding.tuesdayBtn, AddCourseView.this.binding.wednesdayBtn, AddCourseView.this.binding.thursdayBtn,
+            AddCourseView.this.binding.saturdayBtn, AddCourseView.this.binding.sundayBtn};
+    Editable startTimeEditable = AddCourseView.this.binding.startTime.getText();
+    String startTimeSt = startTimeEditable.toString();
+
+    Editable endTimeEditable = AddCourseView.this.binding.endTime.getText();
+    String endTimeSt = endTimeEditable.toString();
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("H:mm");
+
+    if (binding.noMeetingTime.isChecked() == false) {
+        for (CheckBox day : daysOfTheWeek) {
+            DayOfWeek dayOfWeek = DayOfWeek.of(1);
+            if (String.valueOf(day.getText()).toLowerCase().compareTo("mon") == 0) {
+                dayOfWeek = DayOfWeek.MONDAY;
+            } else if (String.valueOf(day.getText()).toLowerCase().compareTo("tue") == 0) {
+                dayOfWeek = DayOfWeek.TUESDAY;
+            } else if (String.valueOf(day.getText()).toLowerCase().compareTo("wed") == 0) {
+                dayOfWeek = DayOfWeek.WEDNESDAY;
+            } else if (String.valueOf(day.getText()).toLowerCase().compareTo("thu") == 0) {
+                dayOfWeek = DayOfWeek.THURSDAY;
+            } else if (String.valueOf(day.getText()).toLowerCase().compareTo("fri") == 0) {
+                dayOfWeek = DayOfWeek.FRIDAY;
+            } else if (String.valueOf(day.getText()).toLowerCase().compareTo("sat") == 0) {
+                dayOfWeek = DayOfWeek.SATURDAY;
+            } else if (String.valueOf(day.getText()).toLowerCase().compareTo("sun") == 0) {
+                dayOfWeek = DayOfWeek.SUNDAY;
+            }
+            LocalDate date = LocalDate.now();
+            date = date.with(TemporalAdjusters.next(dayOfWeek));
+            if (day.isChecked()) {
+                LocalTime startTime = LocalTime.parse(startTimeSt, formatter);
+                LocalTime endTime = LocalTime.parse(endTimeSt, formatter);
+                LocalDateTime startDateTime = LocalDateTime.of(date, startTime);
+                LocalDateTime endDateTime = LocalDateTime.of(date, endTime);
+                Pair<LocalDateTime, LocalDateTime> startAndEnd = new Pair<>(startDateTime, endDateTime);
+                meetingTimes.add(startAndEnd);
+            }
+        }
+    }
+
+    //gets room of new course
+    Editable roomEditable = AddCourseView.this.binding.addedRoomInput.getText();
+    String roomInfo = roomEditable.toString();
+
+    //gets notes of new course
+    Editable notesEditable = AddCourseView.this.binding.notesInput.getText();
+    String notes = notesEditable.toString();
+
+    //creates new course
+    Course newCourse = new Course(courseName, courseCode, courseSemester, notes, roomInfo, meetingTimes);
+    Log.i("New course",newCourse.toDetailedString());
+    addedCourses.add(newCourse);
+    Log.i("Check", String.valueOf(addedCourses));
+    AddCourseView.this.listener.onAddedCourse(newCourse);
+    AddCourseView.this.listener.onAddCourseDone(addedCourses.get(0));
 }
 
 }
