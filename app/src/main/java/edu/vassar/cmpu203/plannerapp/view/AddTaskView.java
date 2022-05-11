@@ -222,10 +222,9 @@ public class AddTaskView extends Fragment implements IAddTaskView, DatePickerDia
                     LocalDateTime deadline = LocalDateTime.of(deadlineDate, deadlineTime);
                     //get and set the associated course for the new task
                     Course associatedCourse = new Course();
-                    if (!(courseSpinner.getSelectedItem().getClass() == Course.class)){
+                    if (courseSpinner.getCount() == 0){
                         associatedCourse = null;
-                    }
-                    else{
+                    }else{
                         associatedCourse = (Course) courseSpinner.getSelectedItem();
                     }
                     //get and set the task type for the new task
