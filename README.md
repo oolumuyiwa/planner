@@ -1,4 +1,4 @@
-# Team J (Aaron and Tomiwa)
+
 
 This repository contains code for the creation of a planner application for Android; to be used by students of any academic level to assist in organization of assignments and other responsibilities for all courses they are enrolled in.
 
